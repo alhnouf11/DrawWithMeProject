@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7214C8B025C9DAAC0030CDAB /* addViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7214C8AF25C9DAAC0030CDAB /* addViewController.swift */; };
 		721DBB4B25C991090081461A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721DBB4A25C991090081461A /* AppDelegate.swift */; };
 		721DBB4D25C991090081461A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721DBB4C25C991090081461A /* SceneDelegate.swift */; };
 		721DBB4F25C9910A0081461A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721DBB4E25C9910A0081461A /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7214C8AF25C9DAAC0030CDAB /* addViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addViewController.swift; sourceTree = "<group>"; };
 		721DBB4725C991090081461A /* DrawWithMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawWithMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		721DBB4A25C991090081461A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		721DBB4C25C991090081461A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				721DBB4C25C991090081461A /* SceneDelegate.swift */,
 				721DBB4E25C9910A0081461A /* ViewController.swift */,
 				721DBB5025C9910A0081461A /* Main.storyboard */,
+				7214C8AF25C9DAAC0030CDAB /* addViewController.swift */,
 				721DBB5625C9910C0081461A /* Assets.xcassets */,
 				721DBB5825C9910C0081461A /* LaunchScreen.storyboard */,
 				721DBB5B25C9910C0081461A /* Info.plist */,
@@ -143,6 +146,7 @@
 				721DBB4F25C9910A0081461A /* ViewController.swift in Sources */,
 				721DBB4B25C991090081461A /* AppDelegate.swift in Sources */,
 				721DBB4D25C991090081461A /* SceneDelegate.swift in Sources */,
+				7214C8B025C9DAAC0030CDAB /* addViewController.swift in Sources */,
 				721DBB5525C9910A0081461A /* DrawWithMe.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
