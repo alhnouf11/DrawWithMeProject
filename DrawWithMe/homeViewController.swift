@@ -1,5 +1,5 @@
 //
-//  addViewController.swift
+//  homeViewController.swift
 //  DrawWithMe
 //
 //  Created by Alhnouf F on 22/06/1442 AH.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class addViewController: UIViewController {
+class homeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

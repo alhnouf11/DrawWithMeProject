@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7214C8B025C9DAAC0030CDAB /* addViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7214C8AF25C9DAAC0030CDAB /* addViewController.swift */; };
 		721DBB4B25C991090081461A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721DBB4A25C991090081461A /* AppDelegate.swift */; };
 		721DBB4D25C991090081461A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721DBB4C25C991090081461A /* SceneDelegate.swift */; };
 		721DBB4F25C9910A0081461A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721DBB4E25C9910A0081461A /* ViewController.swift */; };
@@ -15,10 +14,21 @@
 		721DBB5525C9910A0081461A /* DrawWithMe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 721DBB5325C9910A0081461A /* DrawWithMe.xcdatamodeld */; };
 		721DBB5725C9910C0081461A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 721DBB5625C9910C0081461A /* Assets.xcassets */; };
 		721DBB5A25C9910C0081461A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 721DBB5825C9910C0081461A /* LaunchScreen.storyboard */; };
+		72DB63C325CC552B00C428F2 /* addViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63C225CC552B00C428F2 /* addViewController.swift */; };
+		72DB63C625CC555900C428F2 /* homeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63C525CC555900C428F2 /* homeViewController.swift */; };
+		72DB63C925CC568600C428F2 /* galleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63C825CC568600C428F2 /* galleryViewController.swift */; };
+		72DB63CC25CC573700C428F2 /* stickerBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63CB25CC573700C428F2 /* stickerBookViewController.swift */; };
+		72DB63CF25CC576600C428F2 /* progressChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63CE25CC576600C428F2 /* progressChartViewController.swift */; };
+		72DB63D225CC579E00C428F2 /* drawingLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63D125CC579E00C428F2 /* drawingLevelViewController.swift */; };
+		72DB63D525CC583100C428F2 /* tracingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63D425CC583100C428F2 /* tracingViewController.swift */; };
+		72DB63D825CC5B8900C428F2 /* scoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63D725CC5B8900C428F2 /* scoreViewController.swift */; };
+		72DB63DB25CC5C0D00C428F2 /* colorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63DA25CC5C0D00C428F2 /* colorViewController.swift */; };
+		72DB63DE25CC5D9D00C428F2 /* instructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63DD25CC5D9D00C428F2 /* instructionsViewController.swift */; };
+		72DB63E125CC5F6B00C428F2 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63E025CC5F6B00C428F2 /* profileViewController.swift */; };
+		72DB63E425CC600200C428F2 /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63E325CC600200C428F2 /* menuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7214C8AF25C9DAAC0030CDAB /* addViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addViewController.swift; sourceTree = "<group>"; };
 		721DBB4725C991090081461A /* DrawWithMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawWithMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		721DBB4A25C991090081461A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		721DBB4C25C991090081461A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +38,18 @@
 		721DBB5625C9910C0081461A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		721DBB5925C9910C0081461A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		721DBB5B25C9910C0081461A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72DB63C225CC552B00C428F2 /* addViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addViewController.swift; sourceTree = "<group>"; };
+		72DB63C525CC555900C428F2 /* homeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeViewController.swift; sourceTree = "<group>"; };
+		72DB63C825CC568600C428F2 /* galleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = galleryViewController.swift; sourceTree = "<group>"; };
+		72DB63CB25CC573700C428F2 /* stickerBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stickerBookViewController.swift; sourceTree = "<group>"; };
+		72DB63CE25CC576600C428F2 /* progressChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressChartViewController.swift; sourceTree = "<group>"; };
+		72DB63D125CC579E00C428F2 /* drawingLevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drawingLevelViewController.swift; sourceTree = "<group>"; };
+		72DB63D425CC583100C428F2 /* tracingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tracingViewController.swift; sourceTree = "<group>"; };
+		72DB63D725CC5B8900C428F2 /* scoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scoreViewController.swift; sourceTree = "<group>"; };
+		72DB63DA25CC5C0D00C428F2 /* colorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colorViewController.swift; sourceTree = "<group>"; };
+		72DB63DD25CC5D9D00C428F2 /* instructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = instructionsViewController.swift; sourceTree = "<group>"; };
+		72DB63E025CC5F6B00C428F2 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
+		72DB63E325CC600200C428F2 /* menuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +86,18 @@
 				721DBB4C25C991090081461A /* SceneDelegate.swift */,
 				721DBB4E25C9910A0081461A /* ViewController.swift */,
 				721DBB5025C9910A0081461A /* Main.storyboard */,
-				7214C8AF25C9DAAC0030CDAB /* addViewController.swift */,
+				72DB63E325CC600200C428F2 /* menuViewController.swift */,
+				72DB63E025CC5F6B00C428F2 /* profileViewController.swift */,
+				72DB63DD25CC5D9D00C428F2 /* instructionsViewController.swift */,
+				72DB63DA25CC5C0D00C428F2 /* colorViewController.swift */,
+				72DB63D725CC5B8900C428F2 /* scoreViewController.swift */,
+				72DB63D425CC583100C428F2 /* tracingViewController.swift */,
+				72DB63D125CC579E00C428F2 /* drawingLevelViewController.swift */,
+				72DB63CE25CC576600C428F2 /* progressChartViewController.swift */,
+				72DB63CB25CC573700C428F2 /* stickerBookViewController.swift */,
+				72DB63C825CC568600C428F2 /* galleryViewController.swift */,
+				72DB63C525CC555900C428F2 /* homeViewController.swift */,
+				72DB63C225CC552B00C428F2 /* addViewController.swift */,
 				721DBB5625C9910C0081461A /* Assets.xcassets */,
 				721DBB5825C9910C0081461A /* LaunchScreen.storyboard */,
 				721DBB5B25C9910C0081461A /* Info.plist */,
@@ -143,11 +176,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72DB63D525CC583100C428F2 /* tracingViewController.swift in Sources */,
 				721DBB4F25C9910A0081461A /* ViewController.swift in Sources */,
+				72DB63CC25CC573700C428F2 /* stickerBookViewController.swift in Sources */,
+				72DB63C625CC555900C428F2 /* homeViewController.swift in Sources */,
 				721DBB4B25C991090081461A /* AppDelegate.swift in Sources */,
 				721DBB4D25C991090081461A /* SceneDelegate.swift in Sources */,
-				7214C8B025C9DAAC0030CDAB /* addViewController.swift in Sources */,
+				72DB63CF25CC576600C428F2 /* progressChartViewController.swift in Sources */,
+				72DB63E425CC600200C428F2 /* menuViewController.swift in Sources */,
+				72DB63D825CC5B8900C428F2 /* scoreViewController.swift in Sources */,
+				72DB63E125CC5F6B00C428F2 /* profileViewController.swift in Sources */,
+				72DB63D225CC579E00C428F2 /* drawingLevelViewController.swift in Sources */,
+				72DB63DB25CC5C0D00C428F2 /* colorViewController.swift in Sources */,
+				72DB63C325CC552B00C428F2 /* addViewController.swift in Sources */,
 				721DBB5525C9910A0081461A /* DrawWithMe.xcdatamodeld in Sources */,
+				72DB63DE25CC5D9D00C428F2 /* instructionsViewController.swift in Sources */,
+				72DB63C925CC568600C428F2 /* galleryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
