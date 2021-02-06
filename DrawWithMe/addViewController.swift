@@ -9,6 +9,12 @@ import UIKit
 
 class addViewController: UIViewController {
 
+    @IBAction func backButton(_ sender: Any) {
+        let vcAddUI = self.storyboard?.instantiateViewController(identifier: "switchUI")
+        navigationController?.pushViewController(vcAddUI!, animated: true)
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
