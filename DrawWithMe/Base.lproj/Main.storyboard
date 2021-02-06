@@ -712,10 +712,10 @@
         <!--Navigation Controller-->
         <scene sceneID="wZu-Ui-CiJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bdr-eu-fBd" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="bdr-eu-fBd" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RSU-u0-e1v">
-                        <rect key="frame" x="0.0" y="0.0" width="1194" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
