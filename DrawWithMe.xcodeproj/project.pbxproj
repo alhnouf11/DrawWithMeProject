@@ -50,6 +50,7 @@
 		72DB63DD25CC5D9D00C428F2 /* instructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = instructionsViewController.swift; sourceTree = "<group>"; };
 		72DB63E025CC5F6B00C428F2 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		72DB63E325CC600200C428F2 /* menuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
+		8E72864C25D1E969001B5672 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +203,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				721DBB5125C9910A0081461A /* Base */,
+				8E72864C25D1E969001B5672 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
