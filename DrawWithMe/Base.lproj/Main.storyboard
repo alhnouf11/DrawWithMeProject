@@ -639,18 +639,18 @@
             <objects>
                 <viewController id="1NW-Px-rs8" customClass="drawingLevelViewController" customModule="DrawWithMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fU1-0q-5fb">
-                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wallpaper-MuffinMani_Confetti_1-5" translatesAutoresizingMaskIntoConstraints="NO" id="gqf-5z-zaj">
-                                <rect key="frame" x="-534" y="-352.5" width="2262" height="1539"/>
+                                <rect key="frame" x="-534" y="-169.5" width="2262" height="1539"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1539" id="4SM-Ss-4oz"/>
                                     <constraint firstAttribute="width" constant="2262" id="Ztw-yF-9bD"/>
                                 </constraints>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DtV-35-Hlw">
-                                <rect key="frame" x="99" y="0.0" width="1022" height="834"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DtV-35-Hlw">
+                                <rect key="frame" x="99" y="20" width="1022" height="1160"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Drawing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPj-Ub-gXa">
                                         <rect key="frame" x="237" y="8" width="548" height="84"/>
@@ -852,6 +852,100 @@
                                             <constraint firstItem="XQ6-g3-b25" firstAttribute="top" secondItem="SAI-re-gLb" secondAttribute="top" id="wD3-qi-eD1"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34a-k3-v3v">
+                                        <rect key="frame" x="33" y="791" width="981" height="336"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a_img" translatesAutoresizingMaskIntoConstraints="NO" id="4WI-sF-OHs">
+                                                <rect key="frame" x="8" y="0.0" width="113" height="316"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="316" id="Jyk-X5-HQE"/>
+                                                    <constraint firstAttribute="width" constant="113" id="YuO-Ve-sCn"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="GF8-b8-nfK">
+                                                <rect key="frame" x="129" y="0.0" width="820.5" height="308"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="VBn-QP-q4W">
+                                                        <rect key="frame" x="0.0" y="0.0" width="820.5" height="100"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmR-Gu-5MN">
+                                                                <rect key="frame" x="0.0" y="0.0" width="650" height="100"/>
+                                                                <color key="backgroundColor" red="0.94117647059999998" green="0.60784313729999995" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="650" id="jHT-u2-5fV"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                                <state key="normal" title="               House">
+                                                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gallery" translatesAutoresizingMaskIntoConstraints="NO" id="RnK-Kc-cGj">
+                                                                <rect key="frame" x="650" y="0.0" width="170.5" height="100"/>
+                                                                <color key="backgroundColor" red="0.94117647059999998" green="0.60784313729999995" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="170.5" id="fu2-xo-bQZ"/>
+                                                                    <constraint firstAttribute="height" constant="100" id="v4A-C0-hot"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="100" id="Y4p-t2-P9M"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="74F-xT-PuA">
+                                                        <rect key="frame" x="0.0" y="104" width="820.5" height="100"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkM-cQ-96W">
+                                                                <rect key="frame" x="0.0" y="0.0" width="650" height="100"/>
+                                                                <color key="backgroundColor" red="0.94117647059999998" green="0.60784313729999995" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="650" id="0fY-Vj-GOF"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                                <state key="normal" title="               House">
+                                                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gallery" translatesAutoresizingMaskIntoConstraints="NO" id="mjb-Bn-pz6">
+                                                                <rect key="frame" x="650" y="0.0" width="170.5" height="100"/>
+                                                                <color key="backgroundColor" red="0.94117647059999998" green="0.60784313729999995" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="7jq-6a-x1L">
+                                                        <rect key="frame" x="0.0" y="208" width="820.5" height="100"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PgG-zd-C3i">
+                                                                <rect key="frame" x="0.0" y="0.0" width="650" height="100"/>
+                                                                <color key="backgroundColor" red="0.94117647059999998" green="0.60784313729999995" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="650" id="Xjv-c4-NsX"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                                <state key="normal" title="               House">
+                                                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gallery" translatesAutoresizingMaskIntoConstraints="NO" id="mRh-gA-ke8">
+                                                                <rect key="frame" x="650" y="0.0" width="170.5" height="100"/>
+                                                                <color key="backgroundColor" red="0.94117647059999998" green="0.60784313729999995" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="4WI-sF-OHs" firstAttribute="leading" secondItem="34a-k3-v3v" secondAttribute="leading" constant="8" id="79I-DG-vOA"/>
+                                            <constraint firstAttribute="trailing" secondItem="GF8-b8-nfK" secondAttribute="trailing" constant="31.5" id="AWf-7h-Wek"/>
+                                            <constraint firstItem="4WI-sF-OHs" firstAttribute="top" secondItem="34a-k3-v3v" secondAttribute="top" id="AoX-L9-r62"/>
+                                            <constraint firstItem="4WI-sF-OHs" firstAttribute="top" secondItem="34a-k3-v3v" secondAttribute="top" id="FFY-XK-A76"/>
+                                            <constraint firstAttribute="bottom" secondItem="GF8-b8-nfK" secondAttribute="bottom" constant="28" id="KZM-ty-6OG"/>
+                                            <constraint firstItem="GF8-b8-nfK" firstAttribute="leading" secondItem="4WI-sF-OHs" secondAttribute="trailing" constant="8" id="PIe-dK-rmt"/>
+                                            <constraint firstItem="4WI-sF-OHs" firstAttribute="leading" secondItem="34a-k3-v3v" secondAttribute="leading" constant="8" id="UuW-6Q-meA"/>
+                                            <constraint firstItem="GF8-b8-nfK" firstAttribute="top" secondItem="34a-k3-v3v" secondAttribute="top" id="Z88-h6-Ue9"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <constraints>
@@ -885,10 +979,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZGW-zk-Bsy"/>
+                    <size key="freeformSize" width="1194" height="1200"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y3H-KZ-9D9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="926" y="1468"/>
+            <point key="canvasLocation" x="925.6281407035176" y="1467.6258992805756"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -1101,6 +1196,7 @@
     <resources>
         <image name="BackgroundEraser_image 7" width="166.5" height="166.5"/>
         <image name="Wallpaper-MuffinMani_Confetti_1-5" width="366.5" height="439"/>
+        <image name="a_img" width="148" height="476"/>
         <image name="arrow.uturn.backward" catalog="system" width="128" height="112"/>
         <image name="arrowshape.turn.up.forward.circle.fill" catalog="system" width="128" height="121"/>
         <image name="b_img" width="114" height="407"/>
