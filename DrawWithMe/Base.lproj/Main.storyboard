@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aSO-kK-gAl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i7H-g7-k5v">
     <device id="ipad11_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -106,6 +106,32 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Lw-8O-kyf">
                                 <rect key="frame" x="0.0" y="0.0" width="1194" height="176"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G56-iP-4I4">
+                                        <rect key="frame" x="697" y="31" width="118" height="115"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="eraser"/>
+                                        <connections>
+                                            <action selector="eraserClear:" destination="i7H-g7-k5v" eventType="touchUpInside" id="hn3-yl-hWw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sr3-sk-OUj">
+                                        <rect key="frame" x="392" y="31" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <state key="normal" image="pencil"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ze-g2-tyd">
+                                        <rect key="frame" x="965" y="70" width="83" height="47"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="eraser1:" destination="i7H-g7-k5v" eventType="touchUpInside" id="QjE-CJ-R2i"/>
+                                            <action selector="undo:" destination="JXs-QR-d9b" eventType="touchUpInside" id="wmc-k4-2zV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.93657458699999996" green="0.81568627449999997" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="we7-8b-NHt">
@@ -161,10 +187,20 @@
                             <constraint firstItem="1Lw-8O-kyf" firstAttribute="top" secondItem="JqL-lP-Urt" secondAttribute="top" id="Yb8-Ys-BT8"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem systemItem="undo" id="p6o-wP-a2c">
+                            <connections>
+                                <action selector="undo:" destination="JXs-QR-d9b" id="dTA-yQ-jia"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <connections>
+                        <outlet property="canvasView" destination="we7-8b-NHt" id="RjM-mx-YFe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JXs-QR-d9b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2335" y="1406"/>
+            <point key="canvasLocation" x="2334.6733668341708" y="1405.7553956834533"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="1LR-uw-hLZ">
@@ -398,6 +434,9 @@
                             <constraint firstItem="NDQ-8Z-pfa" firstAttribute="top" secondItem="kqz-Dp-MMd" secondAttribute="top" constant="184" id="yDG-NR-jjZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="canvasView" destination="NDQ-8Z-pfa" id="Faa-7J-qwu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8WJ-Li-naf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -740,13 +779,18 @@
                                     <constraint firstAttribute="width" constant="1194" id="vhG-M9-H6T"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYq-K6-jAF">
+                                <rect key="frame" x="10" y="10" width="97" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.75174492390000003" green="0.44015583619999998" blue="0.23923046919999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" backgroundImage="homekit" catalog="system"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mu-82-Ig5">
                                 <rect key="frame" x="10" y="25" width="97" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.75174492390000003" green="0.44015583619999998" blue="0.23923046919999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" backgroundImage="homekit" catalog="system"/>
                                 <connections>
-                                    <segue destination="bdr-eu-fBd" kind="show" id="yVP-eU-Lvw"/>
+                                    <segue destination="dzn-Ks-rRd" kind="show" id="URb-vG-AqS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1325,9 +1369,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rd4-aO-J67"/>
+        <segue reference="4K5-93-IO9"/>
         <segue reference="5CZ-kJ-PvD"/>
-        <segue reference="JGt-0F-hHy"/>
+        <segue reference="URb-vG-AqS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BackgroundEraser_image 7" width="166.5" height="166.5"/>
@@ -1338,10 +1382,12 @@
         <image name="b_img" width="114" height="407"/>
         <image name="bar-chart (1)" width="170.5" height="170.5"/>
         <image name="checkmark.rectangle.fill" catalog="system" width="128" height="93"/>
+        <image name="eraser" width="512" height="512"/>
         <image name="gallery" width="170.5" height="170.5"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="i_img" width="205" height="704"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="pencil" width="512" height="512"/>
         <image name="person.crop.circle.badge.plus" catalog="system" width="128" height="113"/>
         <image name="person.crop.circle.badge.questionmark.ar" catalog="system" width="128" height="113"/>
         <image name="photo-album" width="170.5" height="170.5"/>
