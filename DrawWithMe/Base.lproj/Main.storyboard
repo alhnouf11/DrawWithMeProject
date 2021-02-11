@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i7H-g7-k5v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xQL-Zx-r78">
     <device id="ipad11_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -121,16 +121,6 @@
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" image="pencil"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ze-g2-tyd">
-                                        <rect key="frame" x="965" y="70" width="83" height="47"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="eraser1:" destination="i7H-g7-k5v" eventType="touchUpInside" id="QjE-CJ-R2i"/>
-                                            <action selector="undo:" destination="JXs-QR-d9b" eventType="touchUpInside" id="wmc-k4-2zV"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.93657458699999996" green="0.81568627449999997" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -180,7 +170,7 @@
                             <constraint firstItem="we7-8b-NHt" firstAttribute="leading" secondItem="1Lw-8O-kyf" secondAttribute="leading" id="0Gu-wh-fuC"/>
                             <constraint firstItem="1Lw-8O-kyf" firstAttribute="trailing" secondItem="JqL-lP-Urt" secondAttribute="trailing" id="B90-RS-0ah"/>
                             <constraint firstItem="1Lw-8O-kyf" firstAttribute="leading" secondItem="JqL-lP-Urt" secondAttribute="leading" id="CLQ-1M-nSX"/>
-                            <constraint firstItem="we7-8b-NHt" firstAttribute="top" secondItem="1Lw-8O-kyf" secondAttribute="bottom" symbolic="YES" id="EgT-Gl-Kzl"/>
+                            <constraint firstItem="we7-8b-NHt" firstAttribute="top" secondItem="1Lw-8O-kyf" secondAttribute="bottom" constant="8" symbolic="YES" id="EgT-Gl-Kzl"/>
                             <constraint firstAttribute="bottom" secondItem="we7-8b-NHt" secondAttribute="bottom" id="JBS-7Z-c6K"/>
                             <constraint firstItem="we7-8b-NHt" firstAttribute="top" secondItem="rjc-wk-mEP" secondAttribute="top" constant="184" id="NhP-Tn-wSy"/>
                             <constraint firstItem="we7-8b-NHt" firstAttribute="trailing" secondItem="1Lw-8O-kyf" secondAttribute="trailing" id="XF4-8E-buX"/>
@@ -371,6 +361,23 @@
             </objects>
             <point key="canvasLocation" x="1623" y="678"/>
         </scene>
+        <!--Test View Controller-->
+        <scene sceneID="WKw-PZ-cgU">
+            <objects>
+                <viewController id="xQL-Zx-r78" customClass="testViewController" customModule="DrawWithMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kEE-gx-Ni6" customClass="PKCanvasView">
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="canvasView" destination="kEE-gx-Ni6" id="pUy-C8-4Ks"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PMp-df-g29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3266" y="-65"/>
+        </scene>
         <!--Color View Controller-->
         <scene sceneID="JLq-W5-HSI">
             <objects>
@@ -380,7 +387,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UV-Xh-prd">
-                                <rect key="frame" x="0.0" y="0.0" width="1194" height="176"/>
+                                <rect key="frame" x="0.0" y="50" width="1194" height="126"/>
                                 <color key="backgroundColor" red="0.93657458699999996" green="0.81568627449999997" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDQ-8Z-pfa">
@@ -434,13 +441,16 @@
                             <constraint firstItem="NDQ-8Z-pfa" firstAttribute="top" secondItem="kqz-Dp-MMd" secondAttribute="top" constant="184" id="yDG-NR-jjZ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="JEC-Z2-nXq">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="Xj5-Eq-WSs"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="canvasView" destination="NDQ-8Z-pfa" id="Faa-7J-qwu"/>
+                        <outlet property="canvasView" destination="NDQ-8Z-pfa" id="D4F-iT-68h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8WJ-Li-naf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2335" y="678"/>
+            <point key="canvasLocation" x="3042.211055276382" y="677.69784172661878"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="bKX-VK-Sq2">
@@ -1366,6 +1376,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTB-VA-54z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-502.0100502512563" y="2211.5107913669067"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vho-67-iKN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TQq-31-e36" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1ls-2J-2tq">
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BCJ-Ir-uRR" kind="relationship" relationship="rootViewController" id="MJT-Gi-BTA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iFq-r6-Mac" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2334.6733668341708" y="677.69784172661878"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

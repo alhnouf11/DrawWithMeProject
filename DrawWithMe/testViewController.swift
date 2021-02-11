@@ -8,14 +8,15 @@
 import UIKit
 import PencilKit
 
-class colorViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerObserver {
+class testViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerObserver {
 
     
    
     
-    @IBOutlet weak var canvasView: PKCanvasView!
-   // let canvasWidth = 768
-    //let canvasHight: CGFloat = 500
+    @IBOutlet var canvasView: PKCanvasView!
+  
+    let canvasWidth = 768
+    let canvasHight: CGFloat = 500
     var drawing = PKDrawing()
 
     override func viewDidLoad() {
@@ -27,11 +28,11 @@ class colorViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerO
         canvasView.allowsFingerDrawing = true
         
         if let window = parent?.view.window,
-           let toolPicker = PKToolPicker.shared(for: window) {
-            toolPicker.setVisible(true, forFirstResponder: canvasView)
+             let toolPicker = PKToolPicker.shared(for: window) {
+             toolPicker.setVisible(true, forFirstResponder: canvasView)
+             toolPicker.addObserver(canvasView)
             
-            toolPicker.addObserver(canvasView)
-            canvasView.becomeFirstResponder()
+             canvasView.becomeFirstResponder()
             
         }
         
