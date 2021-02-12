@@ -25,6 +25,7 @@ class colorViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerO
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //background
         self.canvasView.backgroundColor = UIColor(patternImage: UIImage(named: "house")!)
         
         
