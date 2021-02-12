@@ -26,7 +26,6 @@
 		72DB63DE25CC5D9D00C428F2 /* instructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63DD25CC5D9D00C428F2 /* instructionsViewController.swift */; };
 		72DB63E125CC5F6B00C428F2 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63E025CC5F6B00C428F2 /* profileViewController.swift */; };
 		72DB63E425CC600200C428F2 /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63E325CC600200C428F2 /* menuViewController.swift */; };
-		8E72865A25D57584001B5672 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E72865925D57583001B5672 /* testViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,7 +51,6 @@
 		72DB63E025CC5F6B00C428F2 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		72DB63E325CC600200C428F2 /* menuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
 		8E72864C25D1E969001B5672 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		8E72865925D57583001B5672 /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +103,6 @@
 				721DBB5825C9910C0081461A /* LaunchScreen.storyboard */,
 				721DBB5B25C9910C0081461A /* Info.plist */,
 				721DBB5325C9910A0081461A /* DrawWithMe.xcdatamodeld */,
-				8E72865925D57583001B5672 /* testViewController.swift */,
 			);
 			path = DrawWithMe;
 			sourceTree = "<group>";
@@ -194,7 +191,6 @@
 				72DB63DB25CC5C0D00C428F2 /* colorViewController.swift in Sources */,
 				72DB63C325CC552B00C428F2 /* addViewController.swift in Sources */,
 				721DBB5525C9910A0081461A /* DrawWithMe.xcdatamodeld in Sources */,
-				8E72865A25D57584001B5672 /* testViewController.swift in Sources */,
 				72DB63DE25CC5D9D00C428F2 /* instructionsViewController.swift in Sources */,
 				72DB63C925CC568600C428F2 /* galleryViewController.swift in Sources */,
 			);
@@ -346,7 +342,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DrawWithMe/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,7 +361,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DrawWithMe/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

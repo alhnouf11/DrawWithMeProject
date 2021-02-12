@@ -7,6 +7,7 @@
 
 import UIKit
 import PencilKit
+@available(iOS 14.0,*)
 
 class colorViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerObserver {
 
@@ -14,26 +15,31 @@ class colorViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerO
    
     
     @IBOutlet weak var canvasView: PKCanvasView!
+    
+    
+    
    // let canvasWidth = 768
     //let canvasHight: CGFloat = 500
     var drawing = PKDrawing()
+    private let toolPicker = PKToolPicker()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        canvasView.delegate = self
-        canvasView.drawing = drawing
+        self.canvasView.backgroundColor = UIColor(patternImage: UIImage(named: "house")!)
         
-        canvasView.alwaysBounceVertical = true
-        canvasView.allowsFingerDrawing = true
         
-        if let window = parent?.view.window,
-           let toolPicker = PKToolPicker.shared(for: window) {
-            toolPicker.setVisible(true, forFirstResponder: canvasView)
-            
-            toolPicker.addObserver(canvasView)
-            canvasView.becomeFirstResponder()
-            
+        canvasView.drawingPolicy = .anyInput
+        canvasView.tool = PKInkingTool(.pen,color: .red,width: 5)
+        
+        toolPicker.addObserver(canvasView)
+        toolPicker.setVisible(true, forFirstResponder: canvasView)
+        canvasView.becomeFirstResponder()
+        
+           
         }
+    
+
+      
         
 
     }
@@ -41,4 +47,3 @@ class colorViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerO
 
     
 
-}
