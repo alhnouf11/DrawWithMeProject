@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 //alhnouf
 class ViewController: UIViewController {
 
@@ -17,6 +18,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
       //  navigationController?.setNavigationBarHidden(true, animated: true)
+        
     }
 
 

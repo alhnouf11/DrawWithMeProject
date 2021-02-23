@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+//        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+//             print(urls[urls.count-1] as URL)
+        FirebaseApp.configure()
         return true
     }
 
@@ -49,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  
                 /*
                  Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
+                 isEditable          * The parent directory does not exist, cannot be created, or disallows writing.
                  * The persistent store is not accessible, due to permissions or data protection when the device is locked.
                  * The device is out of space.
                  * The store could not be migrated to the current model version.

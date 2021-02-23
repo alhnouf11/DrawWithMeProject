@@ -1,40 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Drawing" representedClassName="Drawing" syncable="YES" codeGenerationType="class">
-        <attribute name="drawingImg" attributeType="Transformable"/>
-        <attribute name="drawingLevel" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="drawingName" attributeType="String"/>
-        <relationship name="toDrawingPart" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DrawingPart" inverseName="toDrawing" inverseEntity="DrawingPart"/>
-        <relationship name="toT" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trace" inverseName="toDraw" inverseEntity="Trace"/>
-    </entity>
-    <entity name="DrawingPart" representedClassName="DrawingPart" syncable="YES" codeGenerationType="class">
-        <attribute name="descriptionText" attributeType="String"/>
-        <attribute name="partImg" attributeType="Transformable"/>
-        <relationship name="toDrawing" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Drawing" inverseName="toDrawingPart" inverseEntity="Drawing"/>
-    </entity>
-    <entity name="Sticker" representedClassName="Sticker" syncable="YES" codeGenerationType="class">
-        <attribute name="performanceLevel" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="stickerImg" attributeType="Transformable"/>
-        <relationship name="toU" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserProfile" inverseName="toSticker" inverseEntity="UserProfile"/>
-    </entity>
-    <entity name="Trace" representedClassName="Trace" syncable="YES" codeGenerationType="class">
-        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="pLevel" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="traceImg" attributeType="Transformable"/>
-        <relationship name="toDraw" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Drawing" inverseName="toT" inverseEntity="Drawing"/>
-        <relationship name="toUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserProfile" inverseName="toTrace" inverseEntity="UserProfile"/>
-    </entity>
     <entity name="UserProfile" representedClassName="UserProfile" syncable="YES" codeGenerationType="class">
-        <attribute name="name" attributeType="String"/>
-        <attribute name="photo" optional="YES" attributeType="Transformable"/>
-        <relationship name="toSticker" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sticker" inverseName="toU" inverseEntity="Sticker"/>
-        <relationship name="toTrace" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trace" inverseName="toUser" inverseEntity="Trace"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="photo" optional="YES" attributeType="Binary"/>
     </entity>
     <elements>
-        <element name="Drawing" positionX="-81.99609375" positionY="-101.32421875" width="128" height="118"/>
-        <element name="DrawingPart" positionX="134.3984375" positionY="26.9296875" width="128" height="88"/>
-        <element name="Sticker" positionX="95.8828125" positionY="245.12890625" width="128" height="88"/>
-        <element name="Trace" positionX="-335.08984375" positionY="-16.6953125" width="128" height="118"/>
-        <element name="UserProfile" positionX="-134.37890625" positionY="245.2734375" width="128" height="103"/>
+        <element name="UserProfile" positionX="-63" positionY="-18" width="128" height="88"/>
     </elements>
 </model>

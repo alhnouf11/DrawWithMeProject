@@ -1,0 +1,6 @@
+framework module Pods_DrawWithMe {
+  umbrella header "Pods-DrawWithMe-umbrella.h"
+
+  export *
+  module * { export * }
+}
