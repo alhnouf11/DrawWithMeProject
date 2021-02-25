@@ -1421,6 +1421,7 @@
                     <connections>
                         <outlet property="nav" destination="bGV-4q-DZZ" id="FRW-iS-EBK"/>
                         <outlet property="usersCollectionView" destination="lZZ-TH-7b8" id="b6q-aK-Ory"/>
+                        <segue destination="dzn-Ks-rRd" kind="presentation" identifier="goToHomePage" modalPresentationStyle="fullScreen" id="LJm-RP-sex"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1530,8 +1531,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="rd4-aO-J67"/>
-        <segue reference="G5j-D5-jLM"/>
-        <segue reference="JGt-0F-hHy"/>
+        <segue reference="5CZ-kJ-PvD"/>
+        <segue reference="LJm-RP-sex"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BackgroundEraser_image 7" width="166.5" height="166.5"/>

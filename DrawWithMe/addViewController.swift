@@ -29,6 +29,8 @@ class addViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        nameTextField.delegate = self
+        
         imgView.layer.cornerRadius = 40
         
         settingUpKeyboardNotifications()

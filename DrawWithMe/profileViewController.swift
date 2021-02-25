@@ -42,7 +42,7 @@ class profileViewController: UIViewController {
         
         let alertController = UIAlertController(title: "Delete Profile", message: "Are you sure to delete this profile ?", preferredStyle: .alert)
                 
-        let delete = UIAlertAction(title: "Default", style: .destructive) { (action:UIAlertAction) in
+        let delete = UIAlertAction(title: "Delete", style: .destructive) { (action:UIAlertAction) in
             print("You've pressed default")
             self.deleteUSer()
         }
