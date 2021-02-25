@@ -13,6 +13,7 @@
 		721DBB5225C9910A0081461A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 721DBB5025C9910A0081461A /* Main.storyboard */; };
 		721DBB5725C9910C0081461A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 721DBB5625C9910C0081461A /* Assets.xcassets */; };
 		721DBB5A25C9910C0081461A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 721DBB5825C9910C0081461A /* LaunchScreen.storyboard */; };
+		726A3E3225E859A600335747 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726A3E3125E859A600335747 /* UserCollectionViewCell.swift */; };
 		72A5783625E4238F0089A916 /* DrawWithMe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 72A5783425E4238F0089A916 /* DrawWithMe.xcdatamodeld */; };
 		72D8CB4125E4304C002C31A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 72D8CB4025E4304C002C31A0 /* GoogleService-Info.plist */; };
 		72D8CB4525E43AF0002C31A0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D8CB4425E43AF0002C31A0 /* Extensions.swift */; };
@@ -40,6 +41,7 @@
 		721DBB5625C9910C0081461A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		721DBB5925C9910C0081461A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		721DBB5B25C9910C0081461A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		726A3E3125E859A600335747 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		72A5783525E4238F0089A916 /* DrawWithMe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DrawWithMe.xcdatamodel; sourceTree = "<group>"; };
 		72D8CB4025E4304C002C31A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		72D8CB4425E43AF0002C31A0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				72D8CB4425E43AF0002C31A0 /* Extensions.swift */,
 				721DBB4C25C991090081461A /* SceneDelegate.swift */,
 				721DBB4E25C9910A0081461A /* ViewController.swift */,
+				726A3E3125E859A600335747 /* UserCollectionViewCell.swift */,
 				721DBB5025C9910A0081461A /* Main.storyboard */,
 				72DB63E325CC600200C428F2 /* menuViewController.swift */,
 				72DB63E025CC5F6B00C428F2 /* profileViewController.swift */,
@@ -267,6 +270,7 @@
 				72DB63DB25CC5C0D00C428F2 /* colorViewController.swift in Sources */,
 				72DB63C325CC552B00C428F2 /* addViewController.swift in Sources */,
 				72D8CB4525E43AF0002C31A0 /* Extensions.swift in Sources */,
+				726A3E3225E859A600335747 /* UserCollectionViewCell.swift in Sources */,
 				72DB63DE25CC5D9D00C428F2 /* instructionsViewController.swift in Sources */,
 				72DB63C925CC568600C428F2 /* galleryViewController.swift in Sources */,
 			);
