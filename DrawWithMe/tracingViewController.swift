@@ -10,6 +10,9 @@ import PencilKit
 
 class tracingViewController: UIViewController {
 
+    let strokeLayer = CAShapeLayer()
+
+    
     @IBOutlet weak var canvasView: UIView!
     
     var path = UIBezierPath()
@@ -29,13 +32,17 @@ class tracingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //background
-        self.canvasView.backgroundColor = UIColor(patternImage: UIImage(named: "house")!)
+        self.canvasView.backgroundColor = UIColor(patternImage: UIImage(named: "House")!)
         
         
         canvasView.clipsToBounds = true
         canvasView.isMultipleTouchEnabled = false
         
 
+    }
+    
+    @IBAction func testButton (_ sender : UIButton) {
+   
     }
     
 
@@ -55,18 +62,23 @@ class tracingViewController: UIViewController {
         path.move(to: startPoint)
         path.addLine(to: touchPoint)
         startPoint = touchPoint
+        
         //call draw
         draw()
     }
     
     func draw(){
-        let strokeLayer = CAShapeLayer()
+        
         strokeLayer.fillColor = nil
         strokeLayer.lineWidth = 5
         strokeLayer.strokeColor = UIColor.red.cgColor
         strokeLayer.path = path.cgPath
         canvasView.layer.addSublayer(strokeLayer)
         canvasView.setNeedsDisplay()
+        
+  
+        
+        
     }
     
 

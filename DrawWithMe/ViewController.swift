@@ -19,6 +19,9 @@ class ViewController: UIViewController {
         
       //  navigationController?.setNavigationBarHidden(true, animated: true)
         
+        if var IDs = UserDefaults.standard.object(forKey: "usersIDs") as? [String] {
+            print(IDs)
+        }
     }
 
 

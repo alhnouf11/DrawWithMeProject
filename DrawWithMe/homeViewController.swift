@@ -14,6 +14,8 @@ class homeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        profileButton.layer.cornerRadius = 40
 
         nameLabel.text = addViewController.name
         profileButton.setBackgroundImage(addViewController.photo, for: .normal)

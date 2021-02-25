@@ -29,6 +29,8 @@ class addViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imgView.layer.cornerRadius = 40
+        
         settingUpKeyboardNotifications()
         
         if let IDs = UserDefaults.standard.object(forKey: "usersIDs") as? [String] {
@@ -104,24 +106,11 @@ class addViewController: UIViewController {
                             }
                         }
                     }
-                    
                 }
             } else {
                 print(error?.localizedDescription)
             }
         }
-        
-                
-        
-        
-        //  firebase saving
-        
-        
-        
-        
-        
-        
-        
     }
     
     
