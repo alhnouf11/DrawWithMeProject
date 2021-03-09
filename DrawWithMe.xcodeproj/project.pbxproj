@@ -29,6 +29,11 @@
 		72DB63DE25CC5D9D00C428F2 /* instructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63DD25CC5D9D00C428F2 /* instructionsViewController.swift */; };
 		72DB63E125CC5F6B00C428F2 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63E025CC5F6B00C428F2 /* profileViewController.swift */; };
 		72DB63E425CC600200C428F2 /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB63E325CC600200C428F2 /* menuViewController.swift */; };
+		8E9AEECE25F6C26700157EB5 /* TouchDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9AEEC925F6C26600157EB5 /* TouchDrawView.swift */; };
+		8E9AEED025F6C26700157EB5 /* CorrectPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9AEECB25F6C26700157EB5 /* CorrectPoints.swift */; };
+		8E9AEED125F6C26700157EB5 /* StrokeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9AEECC25F6C26700157EB5 /* StrokeSettings.swift */; };
+		8E9AEED225F6C26700157EB5 /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9AEECD25F6C26700157EB5 /* Stroke.swift */; };
+		8E9AEEF425F6C95A00157EB5 /* TracingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9AEEF325F6C95A00157EB5 /* TracingVC.swift */; };
 		F0A35A8FC3EF8122E816AC0D /* Pods_DrawWithMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7572F8665F25BCB5D4F114 /* Pods_DrawWithMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +63,11 @@
 		72DB63E025CC5F6B00C428F2 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		72DB63E325CC600200C428F2 /* menuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
 		8E72864C25D1E969001B5672 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		8E9AEEC925F6C26600157EB5 /* TouchDrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDrawView.swift; sourceTree = "<group>"; };
+		8E9AEECB25F6C26700157EB5 /* CorrectPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrectPoints.swift; sourceTree = "<group>"; };
+		8E9AEECC25F6C26700157EB5 /* StrokeSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokeSettings.swift; sourceTree = "<group>"; };
+		8E9AEECD25F6C26700157EB5 /* Stroke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
+		8E9AEEF325F6C95A00157EB5 /* TracingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracingVC.swift; sourceTree = "<group>"; };
 		B58BB54BD95492F8E132B864 /* Pods-DrawWithMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawWithMe.release.xcconfig"; path = "Target Support Files/Pods-DrawWithMe/Pods-DrawWithMe.release.xcconfig"; sourceTree = "<group>"; };
 		DF7572F8665F25BCB5D4F114 /* Pods_DrawWithMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrawWithMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44CFC1E47F3E6407FC7751C /* Pods-DrawWithMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawWithMe.debug.xcconfig"; path = "Target Support Files/Pods-DrawWithMe/Pods-DrawWithMe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +115,12 @@
 		721DBB4925C991090081461A /* DrawWithMe */ = {
 			isa = PBXGroup;
 			children = (
+				8E9AEECB25F6C26700157EB5 /* CorrectPoints.swift */,
+				8E9AEECD25F6C26700157EB5 /* Stroke.swift */,
+				8E9AEECC25F6C26700157EB5 /* StrokeSettings.swift */,
+				8E9AEEC925F6C26600157EB5 /* TouchDrawView.swift */,
+				8E9AEEF325F6C95A00157EB5 /* TracingVC.swift */,
+				8E9AEEC825F6C23100157EB5 /* Tracing */,
 				721DBB4A25C991090081461A /* AppDelegate.swift */,
 				72D8CB4425E43AF0002C31A0 /* Extensions.swift */,
 				721DBB4C25C991090081461A /* SceneDelegate.swift */,
@@ -130,6 +146,13 @@
 				72D8CB4025E4304C002C31A0 /* GoogleService-Info.plist */,
 			);
 			path = DrawWithMe;
+			sourceTree = "<group>";
+		};
+		8E9AEEC825F6C23100157EB5 /* Tracing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tracing;
 			sourceTree = "<group>";
 		};
 		E17135CECCECC948BB19BC58 /* Frameworks */ = {
@@ -255,7 +278,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E9AEED125F6C26700157EB5 /* StrokeSettings.swift in Sources */,
+				8E9AEED025F6C26700157EB5 /* CorrectPoints.swift in Sources */,
 				72DB63D525CC583100C428F2 /* tracingViewController.swift in Sources */,
+				8E9AEED225F6C26700157EB5 /* Stroke.swift in Sources */,
 				721DBB4F25C9910A0081461A /* ViewController.swift in Sources */,
 				72DB63CC25CC573700C428F2 /* stickerBookViewController.swift in Sources */,
 				72DB63C625CC555900C428F2 /* homeViewController.swift in Sources */,
@@ -265,12 +291,14 @@
 				72DB63E425CC600200C428F2 /* menuViewController.swift in Sources */,
 				72DB63D825CC5B8900C428F2 /* scoreViewController.swift in Sources */,
 				72DB63E125CC5F6B00C428F2 /* profileViewController.swift in Sources */,
+				8E9AEEF425F6C95A00157EB5 /* TracingVC.swift in Sources */,
 				72DB63D225CC579E00C428F2 /* drawingLevelViewController.swift in Sources */,
 				72A5783625E4238F0089A916 /* DrawWithMe.xcdatamodeld in Sources */,
 				72DB63DB25CC5C0D00C428F2 /* colorViewController.swift in Sources */,
 				72DB63C325CC552B00C428F2 /* addViewController.swift in Sources */,
 				72D8CB4525E43AF0002C31A0 /* Extensions.swift in Sources */,
 				726A3E3225E859A600335747 /* UserCollectionViewCell.swift in Sources */,
+				8E9AEECE25F6C26700157EB5 /* TouchDrawView.swift in Sources */,
 				72DB63DE25CC5D9D00C428F2 /* instructionsViewController.swift in Sources */,
 				72DB63C925CC568600C428F2 /* galleryViewController.swift in Sources */,
 			);
