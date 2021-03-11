@@ -97,6 +97,8 @@ class TracingVC: UIViewController {
     
     var currentPoints = [CGPoint]()
     
+    static var tracingLevel = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -107,20 +109,19 @@ class TracingVC: UIViewController {
         case "Moon":
             currentPoints = CorrectPoints.moonPoints
             currentDescription = moonDesc
+            TracingVC.tracingLevel = "b"
         case "Apple":
             currentPoints = CorrectPoints.applePoints
             currentDescription = appleDesc
+            TracingVC.tracingLevel = "i"
         default:
             currentPoints = CorrectPoints.duckPoints
             currentDescription = duckDesc
+            TracingVC.tracingLevel = "a"
         }
         
         setULayout()
-        
-//        print(CorrectPoints.moonPoints)
-//        print(CorrectPoints.moonPoints.count)
-  
-  
+
     }
     
     func setULayout() {
@@ -132,10 +133,8 @@ class TracingVC: UIViewController {
         view.addSubview(image)
         view.addSubview(drawView)
         view.addSubview(nextButton)
-        
-        view.addSubview(resultLabel)
-        
-        view.addSubview(undoButton)
+  
+//        view.addSubview(undoButton)
         
         view.addSubview(originalImage)
         view.addSubview(descriptionLabel)
@@ -169,14 +168,11 @@ class TracingVC: UIViewController {
             nextButton.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -20),
             nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -20),
         
-            undoButton.widthAnchor.constraint(equalToConstant: 50),
-            undoButton.heightAnchor.constraint(equalToConstant: 50),
-            undoButton.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 20),
-            undoButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 20),
-            
-            
-            resultLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            resultLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            undoButton.widthAnchor.constraint(equalToConstant: 50),
+//            undoButton.heightAnchor.constraint(equalToConstant: 50),
+//            undoButton.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 20),
+//            undoButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 20),
+
             
             originalImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             originalImage.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -30),
@@ -190,12 +186,7 @@ class TracingVC: UIViewController {
             
         ])
     }
-    
-    let resultLabel : UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.font = UIFont(name: "Futura", size: 40)
-        return $0
-    }(UILabel())
+ 
 
     
     
@@ -203,12 +194,16 @@ class TracingVC: UIViewController {
     
     var score = 0
     
+    static var scoreResul = ""
+    
     // Moon1
     // Moon2
     // MoonOriginal
     
     // Apple1
     // Apple2
+    
+    static var capturedImage = UIImage()
 
     
     @objc func didTapNext() {
@@ -217,6 +212,9 @@ class TracingVC: UIViewController {
         
         descriptionLabel.text = currentDescription[1]
      
+        // change next button image
+        nextButton.imageView?.tintColor = #colorLiteral(red: 0, green: 0.5628422499, blue: 0.3188166618, alpha: 1)
+        nextButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
         
         if step == 1 {
             
@@ -240,32 +238,45 @@ class TracingVC: UIViewController {
             
 
             if level >= 81 {
-                resultLabel.text = "Excellant"
+                TracingVC.scoreResul = "Excellant"
             }
             
             else if level >= 61 && level <= 80  {
  
-                self.resultLabel.text = "Very Good" //"Score : \(Int(self.score)) %"
+                TracingVC.scoreResul = "Very Good" //"Score : \(Int(self.score)) %"
             }
             
             else if level >= 41 && level <= 60  {
  
-                self.resultLabel.text = "Good" //"Score : \(Int(self.score)) %"
+                TracingVC.scoreResul = "Good" //"Score : \(Int(self.score)) %"
             }
             
             else if level >= 21 && level <= 40  {
  
-                self.resultLabel.text = "Poor" //"Score : \(Int(self.score)) %"
+                TracingVC.scoreResul = "Poor" //"Score : \(Int(self.score)) %"
             }
             
             else {
-                self.resultLabel.text = "Very Poor"
+                TracingVC.scoreResul = "Very Poor"
             }
+            
+            nextButton.alpha = 0
+            descriptionLabel.alpha = 0
+            pinButton.alpha = 0
+            originalImage.alpha = 0
+            
+            UIGraphicsBeginImageContext(self.view.frame.size)
+            view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+            
+            TracingVC.capturedImage = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+      
+            
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "resultVC")
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
         }
 
-        else if step == 2 {
-            // navigate me to score page
-        }
         step += 1
     }
 

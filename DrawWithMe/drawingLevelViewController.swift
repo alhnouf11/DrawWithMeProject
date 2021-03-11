@@ -8,10 +8,6 @@
 import UIKit
 
 class drawingLevelViewController: UIViewController {
-
-    @IBOutlet weak var moonLabel : UIButton!
-    @IBOutlet weak var appleLabel : UIButton!
-    @IBOutlet weak var duckLabel : UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
