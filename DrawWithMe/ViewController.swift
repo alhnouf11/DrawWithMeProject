@@ -77,10 +77,11 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegate,
             let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
                 if error == nil {
                     if let imageData = data {
-                        let image = UIImage(data: imageData)
-                        self.usersImages.append(image!)
-                        DispatchQueue.main.async {
-                            cell.imgView.image = image
+                        if let image = UIImage(data: imageData) {
+                            self.usersImages.append(image)
+                            DispatchQueue.main.async {
+                                cell.imgView.image = image
+                            }
                         }
                     }
                 }

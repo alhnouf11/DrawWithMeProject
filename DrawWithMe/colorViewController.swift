@@ -7,14 +7,16 @@
 
 import UIKit
 import PencilKit
+import Firebase
 @available(iOS 14.0,*)
+
 
 class colorViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerObserver {
 
-    
-   
-    
+  
     @IBOutlet weak var canvasView: PKCanvasView!
+    
+    @IBOutlet weak var originalImage : UIImageView!
     
     
     
@@ -26,8 +28,11 @@ class colorViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerO
     override func viewDidLoad() {
         super.viewDidLoad()
         //background
-        self.canvasView.backgroundColor = UIColor(patternImage: UIImage(named: "house")!)
+        view.backgroundColor = UIColor(patternImage: TracingVC.capturedImage)
         
+        originalImage.image = TracingVC.originalImage
+        
+        canvasView.backgroundColor = .clear
         
         canvasView.drawingPolicy = .anyInput
         canvasView.tool = PKInkingTool(.pen,color: .red,width: 5)
@@ -39,6 +44,40 @@ class colorViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerO
            
         }
     
+    
+    @IBAction func saveNewDrawing(_ sender : UIButton) {
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        
+        let newDrawing = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        
+        let storage = Storage.storage().reference()
+        let imageRef = storage.child("DrawingImage").child(addViewController.id).child(scoreViewController.tracingImageID)
+        
+        guard let imageData = newDrawing.pngData() else {return}
+        
+        imageRef.putData(imageData, metadata: nil) { (meta, err) in
+            if err == nil {
+                imageRef.downloadURL { (url, error) in
+                    let ref = Database.database().reference()
+                    ref.child("MyDrawings").child(addViewController.id).child(scoreViewController.tracingImageID).updateChildValues(["imageURL" : url!.absoluteString]) {  (error, ref) in
+                        if error == nil {
+                            
+                            print("\n \n DONE \n \n ")
+                            
+                            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "HomeVC")
+                            vc.modalPresentationStyle = .fullScreen
+                            self.present(vc, animated: true, completion: nil)
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
 
       
         

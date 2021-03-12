@@ -22,4 +22,12 @@ extension UIImage {
     }
 }
 
+enum Score : String {
+    case Excellent = "Excellent"
+    case VeryGood = "Very Good"
+    case Good = "Good"
+    case Poor = "Poor"
+    case VeryPoor = "Very Poor"
+}
+
 

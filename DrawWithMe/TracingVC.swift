@@ -14,6 +14,7 @@ class TracingVC: UIViewController {
     private static let deltaWidth = CGFloat(5.0)
     
     static var drawName = ""
+    static var originalImage = UIImage()
     
     let moonDesc = ["Moon Step #1", "Moon Step #2"]
     let appleDesc = ["Apple Step #1", "Apple Step #2"]
@@ -146,6 +147,8 @@ class TracingVC: UIViewController {
         originalImage.image = UIImage(named: "\(TracingVC.drawName)Original")
         descriptionLabel.text = currentDescription[0]
         
+        TracingVC.originalImage = UIImage(named: "\(TracingVC.drawName)Original")!
+        
         NSLayoutConstraint.activate([
 //            drawView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
 //            drawView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -238,26 +241,26 @@ class TracingVC: UIViewController {
             
 
             if level >= 81 {
-                TracingVC.scoreResul = "Excellant"
+                TracingVC.scoreResul = Score.Excellent.rawValue
             }
             
             else if level >= 61 && level <= 80  {
  
-                TracingVC.scoreResul = "Very Good" //"Score : \(Int(self.score)) %"
+                TracingVC.scoreResul = Score.VeryGood.rawValue //"Score : \(Int(self.score)) %"
             }
             
             else if level >= 41 && level <= 60  {
  
-                TracingVC.scoreResul = "Good" //"Score : \(Int(self.score)) %"
+                TracingVC.scoreResul = Score.Good.rawValue //"Score : \(Int(self.score)) %"
             }
             
             else if level >= 21 && level <= 40  {
  
-                TracingVC.scoreResul = "Poor" //"Score : \(Int(self.score)) %"
+                TracingVC.scoreResul = Score.Poor.rawValue //"Score : \(Int(self.score)) %"
             }
             
             else {
-                TracingVC.scoreResul = "Very Poor"
+                TracingVC.scoreResul = Score.VeryPoor.rawValue
             }
             
             nextButton.alpha = 0

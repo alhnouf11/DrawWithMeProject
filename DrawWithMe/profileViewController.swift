@@ -13,6 +13,11 @@ class profileViewController: UIViewController {
     @IBOutlet weak var nameTextField : UITextField!
     @IBOutlet weak var errorLabel : UILabel!
     
+    let userID = addViewController.id
+    let ref = Database.database().reference()
+    
+    var storageURLs = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         settingUpKeyboardNotifications()
@@ -23,6 +28,8 @@ class profileViewController: UIViewController {
         
         imgView.image = addViewController.photo
         nameTextField.text = addViewController.name
+        
+        getAllUserURLs()
     }
     
     @IBAction func didTabButton() {
@@ -58,32 +65,79 @@ class profileViewController: UIViewController {
         
     }
     
-    func deleteUSer() {
-        let storage = Storage.storage().reference()
-        let imageRef = storage.child("ProfileImage").child(addViewController.id)
+    // to get all user images urls in storage
+    func getAllUserURLs() {
         
-        imageRef.delete { (error) in
+        ref.child("Users").child(userID).observe(.value) { (snapshot) in
+            if let value = snapshot.value as? [String : AnyObject] {
+                if let prifileImage = value["imageURL"] as? String {
+                    self.storageURLs.append(prifileImage)
+                }
+            } else {
+                print("\n \n  SORRY \n \n ")
+            }
+        }
+        
+        ref.child("MyStickers").child(userID).observe(.childAdded) { (snapshot) in
+            if let value = snapshot.value as? [String : AnyObject] {
+                if let stickerURL = value["imageURL"] as? String {
+                    print(stickerURL)
+                    self.storageURLs.append(stickerURL)
+                }
+            } else {
+                print("\n \n  SORRY \n \n ")
+            }
+        }
+        
+        ref.child("MyDrawings").child(userID).observe(.childAdded) { (snapshot) in
+            if let value = snapshot.value as? [String : AnyObject] {
+                if let drawingURL = value["imageURL"] as? String {
+                    print(drawingURL)
+                    self.storageURLs.append(drawingURL)
+                }
+            } else {
+                print("\n \n  SORRY \n \n ")
+            }
+        }
+    }
+    
+    func deleteUSer() {
+        
+        let ref = Database.database().reference()
+        ref.child("Users").child(userID).removeValue { (error, reference) in
             if error == nil {
-                
-                let ref = Database.database().reference().child("Users").child(addViewController.id)
-                ref.removeValue { (error, reference) in
-                    if error == nil {
-                        if var IDs = UserDefaults.standard.object(forKey: "usersIDs") as? [String] {
-                            
-                            for (index,userID) in IDs.enumerated() {
-                                if userID == addViewController.id {
-                                    IDs.remove(at: index)
-                                    break
-                                }
-                            }
-                           
-                            UserDefaults.standard.setValue(IDs, forKey: "usersIDs")
-                            print(IDs)
-                            
-                            self.performSegue(withIdentifier: "goToSwitch", sender: nil)
+                if var IDs = UserDefaults.standard.object(forKey: "usersIDs") as? [String] {
+                    
+                    for (index,userID) in IDs.enumerated() {
+                        if userID == addViewController.id {
+                            IDs.remove(at: index)
+                            break
                         }
                     }
+                    UserDefaults.standard.setValue(IDs, forKey: "usersIDs")
+                    
+                    ref.child("MyDrawings").child(self.userID).removeValue()
+                    ref.child("MyStickers").child(self.userID).removeValue()
+                    
+                    
+                    for i in self.storageURLs {
+                        let drawingRef = Storage.storage().reference(forURL:i)
+
+                        drawingRef.delete { (error) in
+                            if error == nil {
+                                print("\n \n error : successfully deleted \n \n ")
+                            } else {
+                                print("\n \n error : ", error, "\n \n ")
+                            }
+                        }
+                    }
+
+                    print("User Deleted Successfully")
+                    self.performSegue(withIdentifier: "goToSwitch", sender: nil)
                 }
+                
+                
+                
             }
         }
     }

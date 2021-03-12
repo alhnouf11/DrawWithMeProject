@@ -7,11 +7,14 @@
 
 import UIKit
 
+
 class homeViewController: UIViewController {
     
     @IBOutlet weak var nameLabel : UILabel!
     @IBOutlet weak var profileButton : UIButton!
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,7 +22,11 @@ class homeViewController: UIViewController {
 
         nameLabel.text = addViewController.name
         profileButton.setBackgroundImage(addViewController.photo, for: .normal)
+        
+
+        print(addViewController.id)
     }
+
     
 
     

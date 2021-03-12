@@ -27,7 +27,7 @@ class scoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TracingVC.scoreResul = "Excellent"
+        TracingVC.scoreResul = Score.Excellent.rawValue
         
         print("scoreViewController : ",TracingVC.scoreResul)
 
@@ -51,10 +51,13 @@ class scoreViewController: UIViewController {
     }
     
     func saveUserStickers() {
+        
         for i in userStickers {
            
+            let autoID = String(Date().timeIntervalSince1970)
+            
             let storage = Storage.storage().reference()
-            let imageRef = storage.child("UserStickers").child(String(Date().timeIntervalSince1970))
+            let imageRef = storage.child("UserStickers").child(addViewController.id).child(autoID)
             
             guard let imageData = i.pngData() else {return}
             
@@ -63,7 +66,7 @@ class scoreViewController: UIViewController {
                     imageRef.downloadURL { (url, error) in
                         Database.database().reference().child("MyStickers").child(addViewController.id).childByAutoId().setValue(["imageURL" : url?.absoluteString]) { (error, reference) in
                             if error == nil {
-                                print("Done ya girl")
+                                print("Done saveUserStickers")
                             }
                             else {
                                 print(error?.localizedDescription)
@@ -76,22 +79,26 @@ class scoreViewController: UIViewController {
         }
     }
     
+    static var tracingImageID = ""
+    
     func saveUserDrawingImage() {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
         let dateString = formatter.string(from: Date())
         
-        let storage = Storage.storage().reference()
-        let imageRef = storage.child("DrawingImage").child(String(Date().timeIntervalSince1970))
+        let autoID = String(Int(Date().timeIntervalSince1970))
         
-        guard let imageData = TracingVC.capturedImage.resize(size: 80).pngData() else {return}
+        let storage = Storage.storage().reference()
+        let imageRef = storage.child("DrawingImage").child(addViewController.id).child(autoID)
+        
+        guard let imageData = TracingVC.capturedImage.pngData() else {return}
         
         imageRef.putData(imageData, metadata: nil) { (meta, err) in
             if err == nil {
                 imageRef.downloadURL { (url, error) in
-                    Database.database().reference().child("MyDrawings").child(addViewController.id).childByAutoId().setValue(["imageURL" : url?.absoluteString, "date" : dateString, "score" : TracingVC.scoreResul]) { (error, reference) in
+                    Database.database().reference().child("MyDrawings").child(addViewController.id).child(autoID).setValue(["imageURL" : url?.absoluteString, "date" : dateString, "score" : TracingVC.scoreResul]) { (error, reference) in
                         if error == nil {
-                            print("Done ya girl")
+                            scoreViewController.tracingImageID = autoID
                         }
                     }
                 }
@@ -102,7 +109,7 @@ class scoreViewController: UIViewController {
     
     func starsSetUp() {
         switch TracingVC.scoreResul {
-        case "Excellent":
+        case Score.Excellent.rawValue:
             star1.image = UIImage(systemName: "star.fill")
             star1.tintColor = .orange
             
@@ -120,7 +127,7 @@ class scoreViewController: UIViewController {
             
             getRandomStickers(limit: 2)
         
-        case "Very Good":
+        case Score.VeryGood.rawValue:
             // 4 stars
             star1.image = UIImage(systemName: "star.fill")
             star1.tintColor = .orange
@@ -136,7 +143,7 @@ class scoreViewController: UIViewController {
             
             getRandomStickers(limit: 1)
         
-        case "Good":
+        case Score.Good.rawValue:
             // 3 stars
             star1.image = UIImage(systemName: "star.fill")
             star1.tintColor = .orange
@@ -149,7 +156,7 @@ class scoreViewController: UIViewController {
 
             getRandomStickers(limit: 0)
         
-        case "Poor":
+        case Score.Poor.rawValue:
             // 2 stars
             star1.image = UIImage(systemName: "star.fill")
             star1.tintColor = .orange
