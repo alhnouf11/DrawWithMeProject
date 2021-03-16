@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class addViewController: UIViewController {
+class addViewController: UIViewController{
     @IBOutlet var imgView:UIImageView!
     @IBOutlet weak var nameTextField : UITextField!
     @IBOutlet weak var errorLabel : UILabel!
@@ -24,12 +24,11 @@ class addViewController: UIViewController {
     static var id = ""
     static var photo = UIImage()
     
-    
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        nameTextField.delegate = self
+        nameTextField.delegate = self
         
         imgView.layer.cornerRadius = 40
         
@@ -59,6 +58,8 @@ class addViewController: UIViewController {
     }
     
     @IBAction func saveProfileButton(_ sender  : UIButton) {
+        
+        view.endEditing(true)
         
         guard let name = nameTextField.text, name.isEmpty == false else {
             // show error message

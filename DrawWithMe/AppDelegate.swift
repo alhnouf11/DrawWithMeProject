@@ -12,12 +12,15 @@ import Firebase
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+     var supportedInterfaceOrientation : UIInterfaceOrientationMask { return .landscapeRight}
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 //        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 //             print(urls[urls.count-1] as URL)
+        
+        UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
+        
         FirebaseApp.configure()
         return true
     }

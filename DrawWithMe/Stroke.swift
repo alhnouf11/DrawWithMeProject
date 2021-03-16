@@ -1,9 +1,4 @@
-//
-//  Stroke.swift
-//  Draw
-//
-//  Created by Faris Albalawi on 3/4/21.
-//
+
 import Foundation
 import UIKit
 

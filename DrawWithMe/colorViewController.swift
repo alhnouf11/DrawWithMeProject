@@ -17,6 +17,7 @@ class colorViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerO
     @IBOutlet weak var canvasView: PKCanvasView!
     
     @IBOutlet weak var originalImage : UIImageView!
+    @IBOutlet weak var saveNewDrawingButton : UIButton!
     
     
     
@@ -47,11 +48,17 @@ class colorViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerO
     
     @IBAction func saveNewDrawing(_ sender : UIButton) {
         
+        originalImage.alpha = 0
+        saveNewDrawingButton.alpha = 0
+        
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         
         let newDrawing = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
+        
+        originalImage.alpha = 1
+        saveNewDrawingButton.alpha = 1
         
         
         let storage = Storage.storage().reference()
@@ -83,7 +90,5 @@ class colorViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerO
         
 
     }
-    
-
     
 

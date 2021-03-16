@@ -20,6 +20,9 @@ class profileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nameTextField.delegate =  self
+        
         settingUpKeyboardNotifications()
         errorLabel.alpha = 0
         imgView.layer.cornerRadius = 80
@@ -30,6 +33,8 @@ class profileViewController: UIViewController {
         nameTextField.text = addViewController.name
         
         getAllUserURLs()
+        
+        
     }
     
     @IBAction func didTabButton() {
@@ -143,6 +148,8 @@ class profileViewController: UIViewController {
     }
     
     func updateUser() {
+        view.endEditing(true)
+        
         guard let name = nameTextField.text, name.isEmpty == false else {
             // show error message
             errorLabel.alpha = 1

@@ -19,6 +19,9 @@ class scoreViewController: UIViewController {
     @IBOutlet weak var star5 : UIImageView!
     
     @IBOutlet weak var stickersStackView : UIStackView!
+    
+    @IBOutlet weak var closeButton : UIButton!
+    @IBOutlet weak var colorItButton : UIButton!
 
     var stickers = [UIImage]()
     
@@ -27,7 +30,7 @@ class scoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TracingVC.scoreResul = Score.Excellent.rawValue
+//        TracingVC.scoreResul = Score.Excellent.rawValue
         
         print("scoreViewController : ",TracingVC.scoreResul)
 
@@ -82,6 +85,10 @@ class scoreViewController: UIViewController {
     static var tracingImageID = ""
     
     func saveUserDrawingImage() {
+        
+        closeButton.isEnabled = false
+        colorItButton.isEnabled = false
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
         let dateString = formatter.string(from: Date())
@@ -96,9 +103,11 @@ class scoreViewController: UIViewController {
         imageRef.putData(imageData, metadata: nil) { (meta, err) in
             if err == nil {
                 imageRef.downloadURL { (url, error) in
-                    Database.database().reference().child("MyDrawings").child(addViewController.id).child(autoID).setValue(["imageURL" : url?.absoluteString, "date" : dateString, "score" : TracingVC.scoreResul]) { (error, reference) in
+                    Database.database().reference().child("MyDrawings").child(addViewController.id).child(autoID).setValue(["imageURL" : url?.absoluteString, "date" : dateString, "score" : TracingVC.scoreResul, "level" : TracingVC.tracingLevel]) { (error, reference) in
                         if error == nil {
                             scoreViewController.tracingImageID = autoID
+                            self.closeButton.isEnabled = true
+                            self.colorItButton.isEnabled = true
                         }
                     }
                 }

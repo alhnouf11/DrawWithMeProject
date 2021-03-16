@@ -31,3 +31,10 @@ enum Score : String {
 }
 
 
+extension UIViewController : UITextFieldDelegate {
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        let trimmed = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        textField.text = trimmed
+    }
+}
+

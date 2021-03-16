@@ -1,13 +1,12 @@
-//
-//  ViewController.swift
-//  Draw
-//
-//  Created by Faris Albalawi on 3/4/21.
-//
+
 
 import UIKit
 
-class TracingVC: UIViewController {
+class TracingVC: UIViewController , UIGestureRecognizerDelegate {
+    
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+//        <#code#>
+//    }
     
     static var strokePoints = [CGPoint]()
 
@@ -102,8 +101,6 @@ class TracingVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
 
         
         switch TracingVC.drawName {
