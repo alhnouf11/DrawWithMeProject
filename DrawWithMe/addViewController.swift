@@ -15,9 +15,12 @@ class addViewController: UIViewController{
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    @IBAction func backButton(_ sender: Any) {
-        let vcAddUI = self.storyboard?.instantiateViewController(identifier: "switchUI")
-        navigationController?.pushViewController(vcAddUI!, animated: true)
+
+    // self.dismiss(animated: true, completion: nil) --> Modally
+    
+    @IBAction func backButtonAction(_ sender : UIButton) {
+        self.navigationController?.popViewController(animated: true) // ---> navigation
+        
     }
     
     static var name = ""

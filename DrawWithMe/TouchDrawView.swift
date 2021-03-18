@@ -237,17 +237,20 @@ extension TouchDrawView {
         if let touch = touches.first {
             let asd = touch.location(in: self)
             
-            var x = Int(asd.x)
-            var y = Int(asd.y)
+            let x = Int(asd.x)
+            let y = Int(asd.y)
+            
+            let userPoint = CGPoint(x: x, y: y)
+            TracingVC.userPoints.append(userPoint)
                 
-                for i in 0...7 {
-                    x = x + i
-                    y = y + i
-                    
-                    let srtokePoint = CGPoint(x: x, y: y)
-    //                print("Points",srtokePoint)
-                    TracingVC.strokePoints.append(srtokePoint)
-                }
+//                for i in 0...7 {
+//                    x = x + i
+//                    y = y + i
+//
+//                    let srtokePoint = CGPoint(x: x, y: y)
+//    //                print("Points",srtokePoint)
+//                    TracingVC.userPoints.append(srtokePoint)
+//                }
         }
         
 //        let asd = touches.first?.location(in: self)

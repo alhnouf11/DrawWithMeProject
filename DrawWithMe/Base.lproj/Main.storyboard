@@ -59,7 +59,7 @@
                                         <color key="tintColor" red="0.92067909780000001" green="0.29436809609999998" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="arrow.uturn.backward" catalog="system"/>
                                         <connections>
-                                            <action selector="backButton:" destination="2KC-gR-DfL" eventType="touchUpInside" id="bZk-UM-qiY"/>
+                                            <action selector="backButtonAction:" destination="2KC-gR-DfL" eventType="touchUpInside" id="lXa-V6-g0g"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -147,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRD-Vr-fOh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="862.8140703517588" y="-23.021582733812952"/>
+            <point key="canvasLocation" x="-464" y="-335"/>
         </scene>
         <!--Tracing View Controller-->
         <scene sceneID="3mS-GE-McR">
@@ -312,7 +312,7 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="5CZ-kJ-PvD"/>
+                                    <segue destination="aSO-kK-gAl" kind="presentation" modalPresentationStyle="fullScreen" id="s2B-ec-IIb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -375,7 +375,7 @@
                                 <color key="tintColor" red="0.75174492390000003" green="0.44015583619999998" blue="0.23923046919999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" backgroundImage="homekit" catalog="system"/>
                                 <connections>
-                                    <segue destination="dzn-Ks-rRd" kind="show" id="CBo-Jw-Nzp"/>
+                                    <segue destination="bdr-eu-fBd" kind="show" id="P01-MV-yw3"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Eaj-Ki-IQY">
@@ -446,7 +446,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1CA-Hr-GgU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1735.678391959799" y="2062.5899280575541"/>
+            <point key="canvasLocation" x="-2496" y="268"/>
         </scene>
         <!--Instructions View Controller-->
         <scene sceneID="DDL-qQ-yzV">
@@ -550,7 +550,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8WJ-Li-naf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2613" y="2063"/>
+            <point key="canvasLocation" x="-1795" y="268"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="bKX-VK-Sq2">
@@ -704,7 +704,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ac5-1f-Pad" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1604.5226130653266" y="-23.021582733812952"/>
+            <point key="canvasLocation" x="1601" y="-541"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="3C5-77-sta">
@@ -715,7 +715,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wallpaper-MuffinMani_Confetti_1-5" translatesAutoresizingMaskIntoConstraints="NO" id="4j6-hj-bq7">
-                                <rect key="frame" x="0.0" y="0.0" width="1194" height="814"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1194" height="806.5"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="2XQ-ab-bH8">
@@ -739,7 +739,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0u-BP-meT">
-                                <rect key="frame" x="298.5" y="178" width="597" height="163"/>
+                                <rect key="frame" x="298.5" y="178" width="597" height="161.5"/>
                                 <color key="backgroundColor" red="0.61568627450000002" green="0.80392156859999997" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="55"/>
                                 <state key="normal" title="Start Tracing">
@@ -751,10 +751,10 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="ZYu-03-72h">
-                                <rect key="frame" x="130" y="416" width="934" height="323"/>
+                                <rect key="frame" x="130" y="414.5" width="934" height="317"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ooc-Ef-JUG">
-                                        <rect key="frame" x="0.0" y="0.0" width="258" height="323"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="258" height="317"/>
                                         <color key="backgroundColor" red="0.94117647059999998" green="0.81568627449999997" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="317" id="ox6-p2-o2z"/>
@@ -765,11 +765,11 @@
                                             <color key="titleColor" systemColor="labelColor"/>
                                         </state>
                                         <connections>
-                                            <segue destination="9bn-uy-Kny" kind="show" id="8aG-9N-P1h"/>
+                                            <segue destination="9bn-uy-Kny" kind="presentation" id="8aG-9N-P1h"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xkz-99-ufo">
-                                        <rect key="frame" x="338" y="0.0" width="258" height="323"/>
+                                        <rect key="frame" x="338" y="0.0" width="258" height="317"/>
                                         <color key="backgroundColor" red="0.60784313729999995" green="0.75294117650000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="258" id="h7d-l8-wJt"/>
@@ -781,11 +781,11 @@
                                             <color key="titleColor" systemColor="labelColor"/>
                                         </state>
                                         <connections>
-                                            <segue destination="nzg-KY-ZXk" kind="show" id="y9o-it-PvO"/>
+                                            <segue destination="nzg-KY-ZXk" kind="presentation" id="y9o-it-PvO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qua-xR-9of">
-                                        <rect key="frame" x="676" y="0.0" width="258" height="323"/>
+                                        <rect key="frame" x="676" y="0.0" width="258" height="317"/>
                                         <color key="backgroundColor" red="0.94117647059999998" green="0.60784313729999995" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="317" id="uea-Mc-kPv"/>
@@ -795,19 +795,19 @@
                                             <color key="titleColor" systemColor="labelColor"/>
                                         </state>
                                         <connections>
-                                            <segue destination="4B3-dG-H8t" kind="show" id="RdV-hr-0Kw"/>
+                                            <segue destination="4B3-dG-H8t" kind="presentation" id="RdV-hr-0Kw"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gallery" translatesAutoresizingMaskIntoConstraints="NO" id="joT-eM-Na3">
-                                <rect key="frame" x="168.5" y="496.5" width="181" height="161.5"/>
+                                <rect key="frame" x="168.5" y="493.5" width="181" height="158.5"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-album" translatesAutoresizingMaskIntoConstraints="NO" id="n3N-Cj-UYI">
-                                <rect key="frame" x="506.5" y="496.5" width="181" height="161.5"/>
+                                <rect key="frame" x="506.5" y="493.5" width="181" height="158.5"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bar-chart (1)" translatesAutoresizingMaskIntoConstraints="NO" id="HS6-M7-nOM">
-                                <rect key="frame" x="844.5" y="496.5" width="181" height="161.5"/>
+                                <rect key="frame" x="844.5" y="493.5" width="181" height="158.5"/>
                             </imageView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPq-yi-yTn">
                                 <rect key="frame" x="1062.5" y="50" width="81.5" height="79.5"/>
@@ -861,7 +861,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVc-U5-3bt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="213.06532663316582" y="1436.6906474820146"/>
+            <point key="canvasLocation" x="-1160" y="1437"/>
         </scene>
         <!--Sticker Book View Controller-->
         <scene sceneID="3Y5-sv-Igc">
@@ -906,7 +906,7 @@
                                 <color key="tintColor" red="0.75174492390000003" green="0.44015583619999998" blue="0.23923046919999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" backgroundImage="homekit" catalog="system"/>
                                 <connections>
-                                    <segue destination="bdr-eu-fBd" kind="show" id="4K5-93-IO9"/>
+                                    <action selector="backButtonAction:" destination="nzg-KY-ZXk" eventType="touchUpInside" id="WAk-1a-P00"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ePh-pk-7UG">
@@ -964,7 +964,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wWB-VN-RAM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="200" y="2211.5107913669067"/>
+            <point key="canvasLocation" x="-1160" y="2445"/>
         </scene>
         <!--Progress Chart View Controller-->
         <scene sceneID="UTe-iq-BeL">
@@ -1281,7 +1281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gw9-5S-xdf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="987" y="2355"/>
+            <point key="canvasLocation" x="-478" y="2445"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="oeu-hz-ifw">
@@ -2133,7 +2133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="213.06532663316582" y="-23.021582733812952"/>
+            <point key="canvasLocation" x="-464" y="-1138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jbZ-3f-hVi">
@@ -2151,7 +2151,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TDY-MC-Jsj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-494.47236180904525" y="-23.021582733812952"/>
+            <point key="canvasLocation" x="-1235" y="-1158"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wZu-Ui-CiJ">
@@ -2170,7 +2170,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q0g-dV-khk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-494.47236180904525" y="1436.6906474820146"/>
+            <point key="canvasLocation" x="-2496" y="1437"/>
         </scene>
         <!--Gallery View Controller-->
         <scene sceneID="8i1-sA-VZe">
@@ -2205,7 +2205,7 @@
                                         <color key="tintColor" red="0.75174492385786795" green="0.44015583616211951" blue="0.23923046918218849" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" backgroundImage="homekit" catalog="system"/>
                                         <connections>
-                                            <segue destination="bdr-eu-fBd" kind="show" id="rd4-aO-J67"/>
+                                            <action selector="backButtonAction:" destination="9bn-uy-Kny" eventType="touchUpInside" id="dpL-MX-egG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2335,13 +2335,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTB-VA-54z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-502.0100502512563" y="2211.5107913669067"/>
+            <point key="canvasLocation" x="-1855" y="2445"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rd4-aO-J67"/>
-        <segue reference="G5j-D5-jLM"/>
-        <segue reference="52M-NI-alv"/>
+        <segue reference="s2B-ec-IIb"/>
+        <segue reference="JGt-0F-hHy"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AppleOriginal" width="207" height="234"/>

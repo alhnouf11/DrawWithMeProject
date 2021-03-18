@@ -4,11 +4,7 @@ import UIKit
 
 class TracingVC: UIViewController , UIGestureRecognizerDelegate {
     
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-//        <#code#>
-//    }
-    
-    static var strokePoints = [CGPoint]()
+    static var userPoints = [CGPoint]()
 
     private static let deltaWidth = CGFloat(5.0)
     
@@ -102,6 +98,7 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        TracingVC.userPoints.removeAll()
         
         switch TracingVC.drawName {
         case "Moon":
@@ -196,14 +193,14 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
     
     static var scoreResul = ""
     
-    // Moon1
-    // Moon2
-    // MoonOriginal
-    
-    // Apple1
-    // Apple2
-    
     static var capturedImage = UIImage()
+    
+    var allPartsError = Array(repeating: 0, count: 2)
+    var allPartsLength = Array(repeating: 0, count: 2)
+    var totalTamplatePoints : Double = 0
+    
+    var SSE = 0
+    let allowedDistanceRange = 0
 
     
     @objc func didTapNext() {
@@ -216,69 +213,105 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
         nextButton.imageView?.tintColor = #colorLiteral(red: 0, green: 0.5628422499, blue: 0.3188166618, alpha: 1)
         nextButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
         
-        if step == 1 {
-            
-            for p in currentPoints {
-                
-                let correct = CGPoint(x: Int(p.x), y: Int(p.y))
-                
-                for i in TracingVC.strokePoints {
-                    let x = Int(i.x)
-                    let y = Int(i.y)
-                    
-                    if i.x == correct.x && (y) ... (y + 2) ~= Int(correct.y) {
-                        print("corrrrrrreeeeeeccccttt")
-                        score += 1
-                    }
-                }
-            }
-            
+        calculateErrorRange()
+        
 
-            let level =  Int((Double(score) / Double(currentPoints.count)) * 100.0)
-            
-
-            if level >= 81 {
-                TracingVC.scoreResul = Score.Excellent.rawValue
-            }
-            
-            else if level >= 61 && level <= 80  {
- 
-                TracingVC.scoreResul = Score.VeryGood.rawValue //"Score : \(Int(self.score)) %"
-            }
-            
-            else if level >= 41 && level <= 60  {
- 
-                TracingVC.scoreResul = Score.Good.rawValue //"Score : \(Int(self.score)) %"
-            }
-            
-            else if level >= 21 && level <= 40  {
- 
-                TracingVC.scoreResul = Score.Poor.rawValue //"Score : \(Int(self.score)) %"
-            }
-            
-            else {
-                TracingVC.scoreResul = Score.VeryPoor.rawValue
-            }
-            
+        if step == 2 {
             nextButton.alpha = 0
             descriptionLabel.alpha = 0
             pinButton.alpha = 0
             originalImage.alpha = 0
-            
+
             UIGraphicsBeginImageContext(self.view.frame.size)
             view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-            
+
             TracingVC.capturedImage = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
-      
-            
+
+
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "resultVC")
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
         }
 
+
+        
+    }
+    
+    func calculateErrorRange() {
+        for puj in TracingVC.userPoints {
+                    let x = Int(puj.x)
+                    let y = Int(puj.y)
+                    
+                    var minDistance = 100000
+                    
+                    for pti in CorrectPoints.moonPoints {
+                    
+                        let ptiX = Int(pti.x)
+                        let ptiY = Int(pti.y)
+                        var distance = pow(Double((x - ptiX)), 2) + pow(Double((y - ptiY)), 2)
+                        
+                        distance = max(distance - Double(allowedDistanceRange), 0)
+                        
+                        if Int(distance) < minDistance {
+                            minDistance = Int(distance)
+                        }
+                        SSE += minDistance
+                    }
+                    
+                    let MSE = SSE / TracingVC.userPoints.count
+                    let RMSE = Double(MSE).squareRoot()
+                    
+                    allPartsError[step] = Int(RMSE)
+                    allPartsLength[step] = CorrectPoints.moonPoints.count
+                    totalTamplatePoints += Double(CorrectPoints.moonPoints.count)
+                }
+                
+                
+                var finalTracingError = 0.0
+                        
+                for part in 0...1 {
+                                            // 175   /   354200  = 0.000004
+                    let partWeight = Double(allPartsLength[part]) / totalTamplatePoints
+                    finalTracingError += (partWeight * Double(allPartsError[part]))
+                    
+                    print("finalTracingError : ", finalTracingError)
+                    print("totalTamplatePoints : ", totalTamplatePoints)
+                    print("allPartsLength[\(part)] : ", allPartsLength[part])
+                    print("partWeight : ",partWeight)
+                    print("\n")
+                }
+                
+                
+                
+                if finalTracingError <= 2 {
+                    score = 5
+                    TracingVC.scoreResul = Score.Excellent.rawValue
+                }
+                else if finalTracingError <= 4 {
+                    score = 4
+                    TracingVC.scoreResul = Score.VeryGood.rawValue
+                }
+                else if finalTracingError <= 7 {
+                    score = 3
+                    TracingVC.scoreResul = Score.Good.rawValue
+                }
+                else if finalTracingError <= 18 {
+                    score = 2
+                    TracingVC.scoreResul = Score.Poor.rawValue
+                }
+                else {
+                    score = 1
+                    TracingVC.scoreResul = Score.VeryPoor.rawValue
+                }
+                
+                print("finalTracingError : ", finalTracingError)
+
+                print("final score : ", score)
+                
         step += 1
     }
+    
 
 }
 

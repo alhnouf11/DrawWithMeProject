@@ -32,6 +32,9 @@ class stickerBookViewController: UIViewController {
     }
     
 
+    @IBAction func backButtonAction(_ sender : UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
 
 
 }

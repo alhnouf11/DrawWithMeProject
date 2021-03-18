@@ -49,18 +49,7 @@ class progressChartViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    let noScoreLabel : UILabel = {
-        $0.text = "No Score Data Yet"
-        $0.textAlignment = .center
-        $0.font = UIFont(name: "Futura", size: 16)
-        $0.minimumScaleFactor = 0.5
-        $0.adjustsFontSizeToFitWidth = true
-        $0.textColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
-        return $0
-    }(UILabel())
-    
-    
+ 
     
     func getScoreData() {
         let userID = addViewController.id
@@ -100,6 +89,15 @@ class progressChartViewController: UIViewController {
     func drawChart(scoreArray : [ScoreChart], stack : UIStackView, chartColor : UIColor) {
         
         if scoreArray.count == 0 {
+            let noScoreLabel : UILabel = {
+                $0.text = "No Score Data Yet"
+                $0.textAlignment = .center
+                $0.font = UIFont(name: "Futura", size: 16)
+                $0.minimumScaleFactor = 0.5
+                $0.adjustsFontSizeToFitWidth = true
+                $0.textColor = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
+                return $0
+            }(UILabel())
             stack.alignment = .fill
             stack.addArrangedSubview(noScoreLabel)
         }
@@ -116,7 +114,7 @@ class progressChartViewController: UIViewController {
                     $0.translatesAutoresizingMaskIntoConstraints = false
                     $0.text = i.date
                     $0.textColor = .black
-                    $0.minimumScaleFactor = 0.5
+                    $0.minimumScaleFactor = 0.1
                     $0.font = UIFont(name: "Futura", size: 16)
                     $0.adjustsFontSizeToFitWidth = true
                     $0.textAlignment = .center

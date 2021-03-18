@@ -31,6 +31,9 @@ class galleryViewController: UIViewController {
         getUserDrawings()
     }
     
+    @IBAction func backButtonAction(_ sender : UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func getUserDrawings() {
         let ref = Database.database().reference().child("MyDrawings").child(addViewController.id)

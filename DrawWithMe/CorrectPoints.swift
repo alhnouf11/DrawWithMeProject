@@ -41,7 +41,6 @@ class CorrectPoints: NSObject {
                                            CGPoint(x: 552, y: 208),
                                            CGPoint(x: 577, y: 237),
                                            CGPoint(x: 616, y: 277)
-                                           
     ]
     
     
