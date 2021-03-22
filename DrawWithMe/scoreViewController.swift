@@ -67,7 +67,7 @@ class scoreViewController: UIViewController {
             imageRef.putData(imageData, metadata: nil) { (meta, err) in
                 if err == nil {
                     imageRef.downloadURL { (url, error) in
-                        Database.database().reference().child("MyStickers").child(addViewController.id).childByAutoId().setValue(["imageURL" : url?.absoluteString]) { (error, reference) in
+                        Database.database().reference().child("UserStickers").child(addViewController.id).childByAutoId().setValue(["imageURL" : url?.absoluteString]) { (error, reference) in
                             if error == nil {
                                 print("Done saveUserStickers")
                             }
@@ -96,14 +96,14 @@ class scoreViewController: UIViewController {
         let autoID = String(Int(Date().timeIntervalSince1970))
         
         let storage = Storage.storage().reference()
-        let imageRef = storage.child("DrawingImage").child(addViewController.id).child(autoID)
+        let imageRef = storage.child("Trace").child(addViewController.id).child(autoID)
         
         guard let imageData = TracingVC.capturedImage.pngData() else {return}
         
         imageRef.putData(imageData, metadata: nil) { (meta, err) in
             if err == nil {
                 imageRef.downloadURL { (url, error) in
-                    Database.database().reference().child("MyDrawings").child(addViewController.id).child(autoID).setValue(["imageURL" : url?.absoluteString, "date" : dateString, "score" : TracingVC.scoreResul, "level" : TracingVC.tracingLevel]) { (error, reference) in
+                    Database.database().reference().child("Trace").child(addViewController.id).child(autoID).setValue(["imageURL" : url?.absoluteString, "date" : dateString, "score" : TracingVC.scoreResul, "level" : TracingVC.tracingLevel]) { (error, reference) in
                         if error == nil {
                             scoreViewController.tracingImageID = autoID
                             self.closeButton.isEnabled = true

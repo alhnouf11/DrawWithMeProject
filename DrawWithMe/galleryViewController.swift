@@ -36,7 +36,7 @@ class galleryViewController: UIViewController {
     }
     
     func getUserDrawings() {
-        let ref = Database.database().reference().child("MyDrawings").child(addViewController.id)
+        let ref = Database.database().reference().child("Trace").child(addViewController.id)
         ref.observe(.childAdded) { (snapshot) in
             if let value = snapshot.value as? [String : AnyObject] {
                 let imageKey = snapshot.key
@@ -61,7 +61,9 @@ class galleryViewController: UIViewController {
                 
                 self.galleryArray.append(Gallery(imageKey: imageKey, date: date, imageURL: imageURL, score: scoreInt))
                 
-                self.galleryCollectionView.reloadData()
+                if self.galleryArray.count == snapshot.childrenCount {
+                    self.galleryCollectionView.reloadData()
+                }
             }
         }
     }
@@ -120,6 +122,11 @@ extension galleryViewController : UICollectionViewDelegate, UICollectionViewData
         return CGSize(width: width, height: width)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(galleryArray[indexPath.row].score)
+        
+    }
+    
     
 }
 
@@ -152,12 +159,12 @@ extension galleryViewController : GalleryCellDelegate {
         guard let imageKey = galleryArray[indexpath.row].imageKey else {return}
 
         let storage = Storage.storage().reference()
-        let imageRef = storage.child("DrawingImage").child(addViewController.id).child(imageKey)
+        let imageRef = storage.child("Trace").child(addViewController.id).child(imageKey)
 
         imageRef.delete { (error) in
             if error == nil {
 
-                let ref = Database.database().reference().child("MyDrawings").child(addViewController.id).child(imageKey)
+                let ref = Database.database().reference().child("Trace").child(addViewController.id).child(imageKey)
                 ref.removeValue { (error, reference) in
                     if error == nil {
                         self.galleryArray.remove(at: indexpath.row)

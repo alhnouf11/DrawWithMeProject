@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        setDrawing(name: "Duck", level: "a")
         
         if let IDs = UserDefaults.standard.object(forKey: "usersIDs") as? [String] {
             print("IDs ", IDs)
@@ -109,4 +110,57 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegate,
     }
     
 
+}
+
+
+
+extension ViewController {
+    func setDrawing(name : String, level : String) {
+        
+        let autoID = String(Date().timeIntervalSince1970)
+
+        
+        let storage = Storage.storage().reference()
+        let imageRef = storage.child("Drawing").child(autoID)
+        
+        let OriginalImage = UIImage(named: "\(name)Original")
+        guard let imageData = OriginalImage!.pngData() else {return}
+        
+        let img1 = UIImage(named: "\(name)1")?.pngData()
+        let img2 = UIImage(named: "\(name)2")?.pngData()
+        let partsArray = [img1, img2]
+        
+        let descArray = ["\(name) Step #1", "\(name) Step #2"]
+        
+        imageRef.putData(imageData, metadata: nil) { (meta, err) in
+            if err == nil {
+                imageRef.downloadURL { (url, error) in
+                    Database.database().reference().child("Drawing").childByAutoId().setValue(["Name" : "\(name)", "imageURL" : url?.absoluteString, "Level" : level]) { (error, reference) in
+                        if error == nil {
+                            print("Done")
+ 
+                            for (index, part) in partsArray.enumerated() {
+                                let storageRef = storage.child("DrawingPart").child(String(Date().timeIntervalSince1970))
+                                storageRef.putData(part!, metadata: nil) { (meta, err) in
+                                    storageRef.downloadURL { (url, error) in
+                                        Database.database().reference().child("DrawingPart").child(reference.key!).childByAutoId().setValue(["imgURL" : url?.absoluteString, "description" : descArray[index]]) { (err, refe) in
+                                            if error == nil {
+                                                print("Successfully Added")
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            
+                            
+                        }
+                        else {
+                            print(error?.localizedDescription)
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

@@ -53,7 +53,7 @@ class progressChartViewController: UIViewController {
     
     func getScoreData() {
         let userID = addViewController.id
-        Database.database().reference().child("MyDrawings").child(userID).observe(.value) { (snapshot) in
+        Database.database().reference().child("Trace").child(userID).observe(.value) { (snapshot) in
             if let value = snapshot.value as? [String : AnyObject] {
                 
                 for one in value.values {

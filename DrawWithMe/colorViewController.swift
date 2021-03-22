@@ -62,7 +62,7 @@ class colorViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerO
         
         
         let storage = Storage.storage().reference()
-        let imageRef = storage.child("DrawingImage").child(addViewController.id).child(scoreViewController.tracingImageID)
+        let imageRef = storage.child("Trace").child(addViewController.id).child(scoreViewController.tracingImageID)
         
         guard let imageData = newDrawing.pngData() else {return}
         
@@ -70,7 +70,7 @@ class colorViewController: UIViewController, PKCanvasViewDelegate, PKToolPickerO
             if err == nil {
                 imageRef.downloadURL { (url, error) in
                     let ref = Database.database().reference()
-                    ref.child("MyDrawings").child(addViewController.id).child(scoreViewController.tracingImageID).updateChildValues(["imageURL" : url!.absoluteString]) {  (error, ref) in
+                    ref.child("Trace").child(addViewController.id).child(scoreViewController.tracingImageID).updateChildValues(["imageURL" : url!.absoluteString]) {  (error, ref) in
                         if error == nil {
                             
                             print("\n \n DONE \n \n ")

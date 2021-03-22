@@ -13,7 +13,7 @@ class tracingViewController: UIViewController {
     let strokeLayer = CAShapeLayer()
 
     
-    @IBOutlet weak var canvasView: UIView!
+    @IBOutlet weak var canvasView: PKCanvasView!
     
     var path = UIBezierPath()
     var startPoint = CGPoint()

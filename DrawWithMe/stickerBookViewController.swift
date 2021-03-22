@@ -18,7 +18,7 @@ class stickerBookViewController: UIViewController {
 
         stickersCollectionView.dataSource = self
         
-        Database.database().reference().child("MyStickers").child(addViewController.id).observe(.childAdded) { (snapshot) in
+        Database.database().reference().child("UserStickers").child(addViewController.id).observe(.childAdded) { (snapshot) in
             if let value = snapshot.value as? [String : AnyObject] {
     
 //                for i in value.values {
@@ -26,7 +26,10 @@ class stickerBookViewController: UIViewController {
                         self.stickersURL.append(stickerStringURL)
                     }
 //                }
-                self.stickersCollectionView.reloadData()
+                
+                if self.stickersURL.count == snapshot.childrenCount {
+                    self.stickersCollectionView.reloadData()
+                }
             }
         }
     }
