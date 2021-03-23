@@ -123,6 +123,8 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
     
     static var tracingLevel = ""
     
+    static var stickers = [UIImage]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -133,12 +135,15 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
         switch TracingVC.drawName {
         case "Moon":
             currentPoints = CorrectPoints.moonPoints
+            getLevelStickers(level : "b")
             print("moonPoints")
         case "Apple":
             currentPoints = CorrectPoints.applePoints
+            getLevelStickers(level : "i")
             print("applePoints")
         default:
             currentPoints = CorrectPoints.duckPoints
+            getLevelStickers(level : "a")
             print("duckPoints")
         }
         
@@ -195,6 +200,29 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
         }
         
 
+    }
+    
+    
+    func getLevelStickers(level : String) {
+        Database.database().reference().child("Stickers").child(level).observe(.childAdded) { (snapshot) in
+            if let value = snapshot.value as? [String : AnyObject] {
+                if let urlString = value["stickerURL"] as? String {
+                    
+                    guard let url = URL(string: urlString) else {return}
+                    
+                    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                        if error == nil {
+                            if let data = data {
+                                if let image = UIImage(data: data) {
+                                    TracingVC.stickers.append(image)
+                                }
+                            }
+                        }
+                    }
+                    task.resume()
+                }
+            }
+        }
     }
     
     func downloadImage(urlString : String,desc : String? , partNum : Int) {
@@ -388,8 +416,6 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
                     print("partWeight : ",partWeight)
                     print("\n")
                 }
-                
-                
                 
                 if finalTracingError <= 2 {
                     score = 5

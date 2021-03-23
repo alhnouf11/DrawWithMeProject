@@ -12,6 +12,7 @@ class addViewController: UIViewController{
     @IBOutlet var imgView:UIImageView!
     @IBOutlet weak var nameTextField : UITextField!
     @IBOutlet weak var errorLabel : UILabel!
+    @IBOutlet weak var topConstraint : NSLayoutConstraint!
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -64,6 +65,8 @@ class addViewController: UIViewController{
         
         view.endEditing(true)
         
+        imgView.tintColor = UIColor.systemGray4
+        
         guard let name = nameTextField.text, name.isEmpty == false else {
             // show error message
             errorLabel.alpha = 1
@@ -106,6 +109,8 @@ class addViewController: UIViewController{
                                         addViewController.name = self.nameTextField.text!
                                         addViewController.id = userID
                                         addViewController.photo = self.imgView.image!
+                                        ViewController.users.append(User(id: userID, name: self.nameTextField.text!, imageURL: url?.absoluteString, img: self.imgView.image!))
+//                                        ViewController.usersImages.append(self.imgView.image!)
                                         self.performSegue(withIdentifier: "goToHomePage", sender: nil)
                                     }
                                 }
@@ -153,16 +158,16 @@ extension addViewController {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height / 2
-            }
+            topConstraint.constant = -180
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
+        topConstraint.constant = 0
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
         }
     }
 }

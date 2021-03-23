@@ -61,9 +61,9 @@ class galleryViewController: UIViewController {
                 
                 self.galleryArray.append(Gallery(imageKey: imageKey, date: date, imageURL: imageURL, score: scoreInt))
                 
-                if self.galleryArray.count == snapshot.childrenCount {
+//                if self.galleryArray.count == snapshot.childrenCount {
                     self.galleryCollectionView.reloadData()
-                }
+//                }
             }
         }
     }

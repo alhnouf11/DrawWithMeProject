@@ -12,6 +12,7 @@ class profileViewController: UIViewController {
     @IBOutlet var imgView:UIImageView!
     @IBOutlet weak var nameTextField : UITextField!
     @IBOutlet weak var errorLabel : UILabel!
+    @IBOutlet weak var topConstraint : NSLayoutConstraint!
     
     let userID = addViewController.id
     let ref = Database.database().reference()
@@ -225,16 +226,16 @@ extension profileViewController {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height / 2
-            }
+        topConstraint.constant = -150
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
+        topConstraint.constant = 0
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
         }
     }
 }

@@ -23,7 +23,7 @@ class scoreViewController: UIViewController {
     @IBOutlet weak var closeButton : UIButton!
     @IBOutlet weak var colorItButton : UIButton!
 
-    var stickers = [UIImage]()
+//    var stickers = [UIImage]()
     
     var userStickers = [UIImage]()
 
@@ -38,11 +38,11 @@ class scoreViewController: UIViewController {
 
         // depend on level
         
-        for i in 1...5 {
-            if let image = UIImage(named: "\(TracingVC.tracingLevel)\(i)") {
-                stickers.append(image)
-            }
-        }
+//        for i in 1...5 {
+//            if let image = UIImage(named: "\(TracingVC.tracingLevel)\(i)") {
+//                stickers.append(image)
+//            }
+//        }
         
         starsSetUp()
      
@@ -184,19 +184,19 @@ class scoreViewController: UIViewController {
     
     func getRandomStickers(limit : Int) {
         for _ in 0...limit {
-            let randomSticker = Int(arc4random_uniform(UInt32(stickers.count)))
+            let randomSticker = Int(arc4random_uniform(UInt32(TracingVC.stickers.count)))
             let stickerImageView = UIImageView()
-            stickerImageView.image = stickers[randomSticker]
+            stickerImageView.image = TracingVC.stickers[randomSticker]
             stickerImageView.contentMode = .scaleAspectFit
 
             stickersStackView.addArrangedSubview(stickerImageView)
-            userStickers.append(stickers[randomSticker])
+            userStickers.append(TracingVC.stickers[randomSticker])
             
             NSLayoutConstraint.activate([
                 stickerImageView.widthAnchor.constraint(equalTo: stickerImageView.heightAnchor)
             ])
 
-            stickers.remove(at: randomSticker)
+            TracingVC.stickers.remove(at: randomSticker)
         }
     }
     
