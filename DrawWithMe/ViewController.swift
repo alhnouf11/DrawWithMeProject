@@ -114,6 +114,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegate,
         
         cell.nameLabel.text = ViewController.users[indexPath.row].name
         
+        cell.imgView.tintColor = .gray
         cell.imgView.image = ViewController.users[indexPath.row].img
         
 //        if let stringURL = users[indexPath.row].imageURL {

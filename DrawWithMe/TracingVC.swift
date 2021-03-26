@@ -101,6 +101,7 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
         $0.font = UIFont.systemFont(ofSize: 18)
         $0.textAlignment = .center
         $0.numberOfLines = 0
+        $0.textColor = .black
         return $0
     }(UILabel())
     
@@ -129,6 +130,7 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
         super.viewDidLoad()
 
         TracingVC.userPoints.removeAll()
+        TracingVC.stickers.removeAll()
         
         setULayout()
         

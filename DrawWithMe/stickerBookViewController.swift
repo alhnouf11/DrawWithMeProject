@@ -21,15 +21,13 @@ class stickerBookViewController: UIViewController {
         Database.database().reference().child("UserStickers").child(addViewController.id).observe(.childAdded) { (snapshot) in
             if let value = snapshot.value as? [String : AnyObject] {
     
-//                for i in value.values {
                     if let stickerStringURL = value["imageURL"] as? String {
                         self.stickersURL.append(stickerStringURL)
                     }
-//                }
-                
-                if self.stickersURL.count == snapshot.childrenCount {
+
+//                if self.stickersURL.count == snapshot.childrenCount {
                     self.stickersCollectionView.reloadData()
-                }
+//                }
             }
         }
     }

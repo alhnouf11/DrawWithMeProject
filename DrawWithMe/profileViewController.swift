@@ -22,6 +22,11 @@ class profileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        nameTextField.layer.borderWidth = 1
+        nameTextField.layer.borderColor = UIColor.lightGray.cgColor
+        nameTextField.textColor = .black
+        nameTextField.placeholderColor(text: "Name")
+        
         nameTextField.delegate =  self
         
         settingUpKeyboardNotifications()
@@ -84,7 +89,7 @@ class profileViewController: UIViewController {
             }
         }
         
-        ref.child("MyStickers").child(userID).observe(.childAdded) { (snapshot) in
+        ref.child("UserStickers").child(userID).observe(.childAdded) { (snapshot) in
             if let value = snapshot.value as? [String : AnyObject] {
                 if let stickerURL = value["imageURL"] as? String {
                     print(stickerURL)
@@ -95,11 +100,11 @@ class profileViewController: UIViewController {
             }
         }
         
-        ref.child("MyDrawings").child(userID).observe(.childAdded) { (snapshot) in
+        ref.child("Trace").child(userID).observe(.childAdded) { (snapshot) in
             if let value = snapshot.value as? [String : AnyObject] {
-                if let drawingURL = value["imageURL"] as? String {
-                    print(drawingURL)
-                    self.storageURLs.append(drawingURL)
+                if let traceURL = value["imageURL"] as? String {
+                    print(traceURL)
+                    self.storageURLs.append(traceURL)
                 }
             } else {
                 print("\n \n  SORRY \n \n ")
@@ -107,7 +112,25 @@ class profileViewController: UIViewController {
         }
     }
     
+    lazy var loadingView : UIView = {
+        $0.frame = self.view.bounds
+        $0.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1)
+        return $0
+    }(UIView())
+    
+    lazy var activityIndicator : UIActivityIndicatorView = {
+       $0.hidesWhenStopped = true
+       $0.style = .large
+       $0.center = self.loadingView.center
+       $0.startAnimating()
+       return $0
+   }(UIActivityIndicatorView())
+    
     func deleteUSer() {
+        
+        view.addSubview(loadingView)
+        loadingView.addSubview(activityIndicator)
+        view.endEditing(true)
         
         let ref = Database.database().reference()
         ref.child("Users").child(userID).removeValue { (error, reference) in
@@ -122,8 +145,14 @@ class profileViewController: UIViewController {
                     }
                     UserDefaults.standard.setValue(IDs, forKey: "usersIDs")
                     
-                    ref.child("MyDrawings").child(self.userID).removeValue()
-                    ref.child("MyStickers").child(self.userID).removeValue()
+                    for (index,i) in ViewController.users.enumerated() {
+                        if i.id == addViewController.id {
+                            ViewController.users.remove(at: index)
+                        }
+                    }
+                    
+                    ref.child("Trace").child(self.userID).removeValue()
+                    ref.child("UserStickers").child(self.userID).removeValue()
                     
                     
                     for i in self.storageURLs {
@@ -137,7 +166,8 @@ class profileViewController: UIViewController {
                             }
                         }
                     }
-
+                    
+                    self.loadingView.removeFromSuperview()
                     print("User Deleted Successfully")
                     self.performSegue(withIdentifier: "goToSwitch", sender: nil)
                 }
@@ -150,10 +180,13 @@ class profileViewController: UIViewController {
     
     func updateUser() {
         view.endEditing(true)
+        view.addSubview(loadingView)
+        loadingView.addSubview(activityIndicator)
         
         guard let name = nameTextField.text, name.isEmpty == false else {
             // show error message
             errorLabel.alpha = 1
+            self.loadingView.removeFromSuperview()
             return
         }
         
@@ -179,6 +212,7 @@ class profileViewController: UIViewController {
                         imageRef.downloadURL { (url, error) in
                             ref.child("Users").child(addViewController.id).updateChildValues(["imageURL" : url?.absoluteString]) {  (error, ref) in
                                 if error == nil {
+                                    self.loadingView.removeFromSuperview()
                                     addViewController.name = self.nameTextField.text!
                                     addViewController.photo = self.imgView.image!
                                     self.performSegue(withIdentifier: "goToHomePage", sender: nil)
@@ -239,3 +273,4 @@ extension profileViewController {
         }
     }
 }
+

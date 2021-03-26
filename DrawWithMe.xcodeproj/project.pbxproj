@@ -34,6 +34,7 @@
 		8E9AEED125F6C26700157EB5 /* StrokeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9AEECC25F6C26700157EB5 /* StrokeSettings.swift */; };
 		8E9AEED225F6C26700157EB5 /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9AEECD25F6C26700157EB5 /* Stroke.swift */; };
 		8E9AEEF425F6C95A00157EB5 /* TracingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9AEEF325F6C95A00157EB5 /* TracingVC.swift */; };
+		8EB4FFDC260D5D0300E7E21C /* vid.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 8EB4FFDB260D5D0300E7E21C /* vid.MOV */; };
 		F0A35A8FC3EF8122E816AC0D /* Pods_DrawWithMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7572F8665F25BCB5D4F114 /* Pods_DrawWithMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		8E9AEECC25F6C26700157EB5 /* StrokeSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokeSettings.swift; sourceTree = "<group>"; };
 		8E9AEECD25F6C26700157EB5 /* Stroke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
 		8E9AEEF325F6C95A00157EB5 /* TracingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracingVC.swift; sourceTree = "<group>"; };
+		8EB4FFDB260D5D0300E7E21C /* vid.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = vid.MOV; sourceTree = "<group>"; };
 		B58BB54BD95492F8E132B864 /* Pods-DrawWithMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawWithMe.release.xcconfig"; path = "Target Support Files/Pods-DrawWithMe/Pods-DrawWithMe.release.xcconfig"; sourceTree = "<group>"; };
 		DF7572F8665F25BCB5D4F114 /* Pods_DrawWithMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrawWithMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44CFC1E47F3E6407FC7751C /* Pods-DrawWithMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawWithMe.debug.xcconfig"; path = "Target Support Files/Pods-DrawWithMe/Pods-DrawWithMe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		721DBB4925C991090081461A /* DrawWithMe */ = {
 			isa = PBXGroup;
 			children = (
+				8EB4FFDB260D5D0300E7E21C /* vid.MOV */,
 				8E9AEECB25F6C26700157EB5 /* CorrectPoints.swift */,
 				8E9AEECD25F6C26700157EB5 /* Stroke.swift */,
 				8E9AEECC25F6C26700157EB5 /* StrokeSettings.swift */,
@@ -223,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				721DBB5A25C9910C0081461A /* LaunchScreen.storyboard in Resources */,
+				8EB4FFDC260D5D0300E7E21C /* vid.MOV in Resources */,
 				721DBB5725C9910C0081461A /* Assets.xcassets in Resources */,
 				721DBB5225C9910A0081461A /* Main.storyboard in Resources */,
 				72D8CB4125E4304C002C31A0 /* GoogleService-Info.plist in Resources */,
@@ -450,6 +454,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TMJS3AGR9G;
 				INFOPLIST_FILE = DrawWithMe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,6 +475,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TMJS3AGR9G;
 				INFOPLIST_FILE = DrawWithMe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -32,6 +32,11 @@ class addViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        nameTextField.layer.borderWidth = 1
+        nameTextField.layer.borderColor = UIColor.lightGray.cgColor
+        nameTextField.textColor = .black
+        nameTextField.placeholderColor(text: "Name")
+        
         nameTextField.delegate = self
         
         imgView.layer.cornerRadius = 40
@@ -61,15 +66,31 @@ class addViewController: UIViewController{
         
     }
     
+    lazy var loadingView : UIView = {
+        $0.frame = self.view.bounds
+        $0.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1)
+        return $0
+    }(UIView())
+    
+    lazy var activityIndicator : UIActivityIndicatorView = {
+       $0.hidesWhenStopped = true
+       $0.style = .large
+       $0.center = self.loadingView.center
+       $0.startAnimating()
+       return $0
+   }(UIActivityIndicatorView())
+    
     @IBAction func saveProfileButton(_ sender  : UIButton) {
         
+        view.addSubview(loadingView)
+        loadingView.addSubview(activityIndicator)
         view.endEditing(true)
         
-        imgView.tintColor = UIColor.systemGray4
         
         guard let name = nameTextField.text, name.isEmpty == false else {
             // show error message
             errorLabel.alpha = 1
+            loadingView.removeFromSuperview()
             return
         }
         
@@ -110,7 +131,7 @@ class addViewController: UIViewController{
                                         addViewController.id = userID
                                         addViewController.photo = self.imgView.image!
                                         ViewController.users.append(User(id: userID, name: self.nameTextField.text!, imageURL: url?.absoluteString, img: self.imgView.image!))
-//                                        ViewController.usersImages.append(self.imgView.image!)
+                                        self.loadingView.removeFromSuperview()
                                         self.performSegue(withIdentifier: "goToHomePage", sender: nil)
                                     }
                                 }
