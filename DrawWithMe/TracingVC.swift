@@ -17,11 +17,7 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
     
     static var drawName = ""
     static var originalImage = UIImage()
-    
-//    let moonDesc = ["Moon Step #1", "Moon Step #2"]
-//    let appleDesc = ["Apple Step #1", "Apple Step #2"]
-//    let duckDesc = ["Duck Step #1", "Duck Step #2"]
-    
+ 
     var partImages = [UIImage]()
     
     var partArray = [Part]()
@@ -183,16 +179,12 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
                         
                         if let partValue = partSnapshot.value as? [String  :AnyObject] {
                             if let desc = partValue["description"] as? String,let imgURL = partValue["imgURL"] as? String,let partNum = partValue["part"] as? Int {
-//                                self.currentDescription.append(desc)
-//                                self.descriptionLabel.text =  self.currentDescription[0]
+
                                 
                                 self.downloadImage(urlString: imgURL, desc: desc, partNum: partNum)
                                 
                                 self.parts += 1
                                 
-//                                if self.parts == partSnapshot.childrenCount {
-//                                    self.loadingView.removeFromSuperview()
-//                                }
                             }
                         }
                     }
@@ -235,13 +227,7 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
                         if let image = UIImage(data: data) {
                         self.partImages.append(image)
                             self.partArray.append(Part(partNum: partNum, img: image, desc: desc))
-//                            if partNum == 1 {
-//                                print("Hello")
-//                                DispatchQueue.main.async {
-//                                    self.image.image = image
-//                                    self.descriptionLabel.text = self.partArray.
-//                                }
-//                            }
+
                             
                             if self.parts == 2 {
                                 DispatchQueue.main.async {
@@ -297,13 +283,7 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
             nextButton.heightAnchor.constraint(equalToConstant: 50),
             nextButton.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -20),
             nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -20),
-        
-//            undoButton.widthAnchor.constraint(equalToConstant: 50),
-//            undoButton.heightAnchor.constraint(equalToConstant: 50),
-//            undoButton.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 20),
-//            undoButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 20),
-
-            
+               
             originalImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             originalImage.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -30),
             originalImage.widthAnchor.constraint(equalToConstant: 150),
@@ -317,27 +297,23 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
         ])
     }
  
+// MARK: - Variables Declaration
 
-    
-    
+//    static var userPoints = [CGPoint]()
     var step = 0
-    
     var score = 0
-    
     static var scoreResul = ""
-    
     static var capturedImage = UIImage()
-    
     lazy var allPartsError = Array(repeating: 0, count: parts)
     lazy var allPartsLength = Array(repeating: 0, count: parts)
     var totalTamplatePoints : Double = 0
-    
     var SSE = 0
     let allowedDistanceRange = 0
 
     
+    
+    
     @objc func didTapNext() {
-        
         
         for i in partArray {
             if i.partNum == 2 {
@@ -345,7 +321,6 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
                 self.descriptionLabel.text = i.desc
             }
         }
-    
         // change next button image
         nextButton.imageView?.tintColor = #colorLiteral(red: 0, green: 0.5628422499, blue: 0.3188166618, alpha: 1)
         nextButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
@@ -375,30 +350,41 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
         
     }
     
+    
+    
+    // MARK: - Calculate Score for User Tracing
+    
     func calculateErrorRange() {
+        
+//       calculate the error for each point puj in user tracing
         for puj in TracingVC.userPoints {
                     let x = Int(puj.x)
                     let y = Int(puj.y)
-                    
-                    var minDistance = 100000
-                    
+                    var minDistance = 100000 // initial value
+            
+//            find the distance to its closest point in the tampelet (pti)
                     for pti in currentPoints {
-                    
                         let ptiX = Int(pti.x)
                         let ptiY = Int(pti.y)
                         var distance = pow(Double((x - ptiX)), 2) + pow(Double((y - ptiY)), 2)
                         
-                        distance = max(distance - Double(allowedDistanceRange), 0)
+
+                        distance = max(distance, 0)
                         
+//                      update minDistance if it's less
                         if Int(distance) < minDistance {
                             minDistance = Int(distance)
                         }
+//                      sum of squared errors
                         SSE += minDistance
                     }
-                    
+            
+//                    calculate mean squared error
                     let MSE = SSE / TracingVC.userPoints.count
+//                    calculate Root mean squared error
                     let RMSE = Double(MSE).squareRoot()
-                    
+            
+            
                     allPartsError[step] = Int(RMSE)
                     allPartsLength[step] = currentPoints.count
                     totalTamplatePoints += Double(currentPoints.count)
@@ -406,19 +392,17 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
                 
                 
                 var finalTracingError = 0.0
-                        
-                for part in 0...1 {
-                                            // 175   /   354200  = 0.000004
+//              calculate find error for whole tracing
+                for part in 0...(parts - 1) { // parts = number of parts
                     let partWeight = Double(allPartsLength[part]) / totalTamplatePoints
                     finalTracingError += (partWeight * Double(allPartsError[part]))
-                    
                     print("finalTracingError : ", finalTracingError)
                     print("totalTamplatePoints : ", totalTamplatePoints)
                     print("allPartsLength[\(part)] : ", allPartsLength[part])
                     print("partWeight : ",partWeight)
                     print("\n")
                 }
-                
+//        convert the error to a score
                 if finalTracingError <= 2 {
                     score = 5
                     TracingVC.scoreResul = Score.Excellent.rawValue

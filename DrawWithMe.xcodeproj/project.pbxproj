@@ -35,6 +35,7 @@
 		8E9AEED225F6C26700157EB5 /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9AEECD25F6C26700157EB5 /* Stroke.swift */; };
 		8E9AEEF425F6C95A00157EB5 /* TracingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9AEEF325F6C95A00157EB5 /* TracingVC.swift */; };
 		8EB4FFDC260D5D0300E7E21C /* vid.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 8EB4FFDB260D5D0300E7E21C /* vid.MOV */; };
+		8EB4FFFB2613B81500E7E21C /* My Movie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8EB4FFFA2613B81400E7E21C /* My Movie.mp4 */; };
 		F0A35A8FC3EF8122E816AC0D /* Pods_DrawWithMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7572F8665F25BCB5D4F114 /* Pods_DrawWithMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		8E9AEECD25F6C26700157EB5 /* Stroke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
 		8E9AEEF325F6C95A00157EB5 /* TracingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracingVC.swift; sourceTree = "<group>"; };
 		8EB4FFDB260D5D0300E7E21C /* vid.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = vid.MOV; sourceTree = "<group>"; };
+		8EB4FFFA2613B81400E7E21C /* My Movie.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "My Movie.mp4"; sourceTree = "<group>"; };
 		B58BB54BD95492F8E132B864 /* Pods-DrawWithMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawWithMe.release.xcconfig"; path = "Target Support Files/Pods-DrawWithMe/Pods-DrawWithMe.release.xcconfig"; sourceTree = "<group>"; };
 		DF7572F8665F25BCB5D4F114 /* Pods_DrawWithMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrawWithMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44CFC1E47F3E6407FC7751C /* Pods-DrawWithMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawWithMe.debug.xcconfig"; path = "Target Support Files/Pods-DrawWithMe/Pods-DrawWithMe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				8EB4FFDB260D5D0300E7E21C /* vid.MOV */,
+				8EB4FFFA2613B81400E7E21C /* My Movie.mp4 */,
 				8E9AEECB25F6C26700157EB5 /* CorrectPoints.swift */,
 				8E9AEECD25F6C26700157EB5 /* Stroke.swift */,
 				8E9AEECC25F6C26700157EB5 /* StrokeSettings.swift */,
@@ -226,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				721DBB5A25C9910C0081461A /* LaunchScreen.storyboard in Resources */,
+				8EB4FFFB2613B81500E7E21C /* My Movie.mp4 in Resources */,
 				8EB4FFDC260D5D0300E7E21C /* vid.MOV in Resources */,
 				721DBB5725C9910C0081461A /* Assets.xcassets in Resources */,
 				721DBB5225C9910A0081461A /* Main.storyboard in Resources */,

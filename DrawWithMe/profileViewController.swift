@@ -62,7 +62,7 @@ class profileViewController: UIViewController {
                 
         let delete = UIAlertAction(title: "Delete", style: .destructive) { (action:UIAlertAction) in
             print("You've pressed default")
-            self.deleteUSer()
+            self.deleteUser()
         }
 
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action:UIAlertAction) in
@@ -126,7 +126,7 @@ class profileViewController: UIViewController {
        return $0
    }(UIActivityIndicatorView())
     
-    func deleteUSer() {
+    func deleteUser() {
         
         view.addSubview(loadingView)
         loadingView.addSubview(activityIndicator)
@@ -215,6 +215,16 @@ class profileViewController: UIViewController {
                                     self.loadingView.removeFromSuperview()
                                     addViewController.name = self.nameTextField.text!
                                     addViewController.photo = self.imgView.image!
+                                    
+                                    for (index, i) in ViewController.users.enumerated() {
+                                        if i.id == addViewController.id {
+                                            let updatedUser = User(id: i.id, name: self.nameTextField.text!, imageURL: i.imageURL, img: self.imgView.image!)
+                                            ViewController.users.remove(at: index)
+                                            ViewController.users.insert(updatedUser, at: index)
+                                        }
+                                    }
+                                    
+                                    
                                     self.performSegue(withIdentifier: "goToHomePage", sender: nil)
                                 }
                             }
