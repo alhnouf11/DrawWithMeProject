@@ -12,8 +12,8 @@ struct Part {
 class TracingVC: UIViewController , UIGestureRecognizerDelegate {
     
     static var userPoints = [CGPoint]()
-
-    private static let deltaWidth = CGFloat(5.0)
+//
+//    private static let deltaWidth = CGFloat(5.0)
     
     static var drawName = ""
     static var originalImage = UIImage()
@@ -28,9 +28,8 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
     
     private lazy var drawView: TouchDrawView = {
         let drawView = TouchDrawView()
-        drawView.delegate = self
         drawView.setColor(.red)
-        drawView.setWidth(TracingVC.deltaWidth)
+        drawView.setWidth(5)
         drawView.translatesAutoresizingMaskIntoConstraints = false
         drawView.backgroundColor = .clear
         return drawView
@@ -41,9 +40,11 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
-//        image.backgroundColor = .systemPink
         return image
     }()
+    
+    let btn = UIButton()
+    
     
     
     private lazy var nextButton: UIButton = {
@@ -59,32 +60,6 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
         return button
     }()
     
-    
-    private lazy var pinButton: UIButton = {
-        let button = UIButton()
-        let image = UIImage(systemName: "arrow.forward.circle.fill")
-        button.setImage(image, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.imageView?.tintColor = .systemBlue
-        button.contentVerticalAlignment = .fill
-        button.contentHorizontalAlignment = .fill
-        button.addTarget(self, action: #selector(self.didTapNext), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var undoButton: UIButton = {
-        let button = UIButton()
-        let image = UIImage(systemName: "pencil")
-        button.setImage(image, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.imageView?.tintColor = .systemBlue
-        button.contentVerticalAlignment = .fill
-        button.contentHorizontalAlignment = .fill
-        button.addTarget(self, action: #selector(self.undoEnabled), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
     
     let originalImage : UIImageView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -152,7 +127,6 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
                 
                 if TracingVC.drawName == value["Name"] as? String {
                     print(snapshot.key)
-//                    print(value["Name"] as? String)
                     if let level = value["Level"] as? String, let originalImageURL = value["imageURL"] as? String {
                         TracingVC.tracingLevel = level
                         
@@ -225,10 +199,10 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
                 if error == nil {
                     if let data = data {
                         if let image = UIImage(data: data) {
-                        self.partImages.append(image)
+//                        self.partImages.append(image)
                             self.partArray.append(Part(partNum: partNum, img: image, desc: desc))
 
-                            
+          
                             if self.parts == 2 {
                                 DispatchQueue.main.async {
                                     self.loadingView.removeFromSuperview()
@@ -240,9 +214,6 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
                                     }
                                 }
                             }
-                                
-                       
-                            
                         }
                     }
                 }
@@ -267,7 +238,6 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
         
         NSLayoutConstraint.activate([
 
-            
             drawView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             drawView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             drawView.widthAnchor.constraint(equalToConstant: 512),
@@ -311,8 +281,7 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
     let allowedDistanceRange = 0
 
     
-    
-    
+
     @objc func didTapNext() {
         
         for i in partArray {
@@ -331,7 +300,6 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
         if step == 2 {
             nextButton.alpha = 0
             descriptionLabel.alpha = 0
-            pinButton.alpha = 0
             originalImage.alpha = 0
 
             UIGraphicsBeginImageContext(self.view.frame.size)
@@ -434,34 +402,3 @@ class TracingVC: UIViewController , UIGestureRecognizerDelegate {
 
 }
 
-
-extension TracingVC: TouchDrawViewDelegate {
-    
-    // MARK: - TouchDrawViewDelegate
-
-    func undoEnabled() {
-        // to do
-        drawView.undo()
-    }
-
-    func undoDisabled() {
-        // to do
-    }
-
-    func redoEnabled() {
-        // to do
-    }
-
-    func redoDisabled() {
-        // to do
-    }
-
-    func clearEnabled() {
-       // to do
-    }
-
-    func clearDisabled() {
-        // to do
-    }
-    
-}

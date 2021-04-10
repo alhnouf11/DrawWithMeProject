@@ -4,47 +4,6 @@ import UIKit
 class CorrectPoints: NSObject {
 
     static let applePoints : [CGPoint] = [
-//        CGPoint(x: 597 , y: 296),
-//                                           CGPoint(x: 637 , y: 285),
-//                                           CGPoint(x: 716 , y: 314),
-//                                           CGPoint(x: 737 , y: 331),
-//                                           CGPoint(x:  752 , y: 415),
-//                                           CGPoint(x:  623 , y: 582),
-//                                           CGPoint(x:  666, y:  560),
-//                                           CGPoint(x:  714, y:  544),
-//                                           CGPoint(x:  743, y:  494),
-//                                           CGPoint(x: 750 , y: 452),
-//                                           CGPoint(x: 469 , y: 455),
-//                                           CGPoint(x:  473, y:  460),
-//                                           CGPoint(x: 467 , y: 455),
-//                                           CGPoint(x: 511, y:  524),
-//                                           CGPoint(x: 515 , y: 529),
-//                                           CGPoint(x: 545 , y: 557),
-//                                           CGPoint(x:  597 , y: 592),
-//                                           CGPoint(x: 606 , y: 306),
-//                                           CGPoint(x:  608 , y: 310),
-//                                           CGPoint(x:  594 , y: 301),
-//                                           CGPoint(x:  570 , y: 285),
-//                                           CGPoint(x:  556, y:  287),
-//                                           CGPoint(x: 495 , y: 301),
-//                                           CGPoint(x:  489 , y: 344),
-//                                           CGPoint(x: 526 , y: 539),
-//                                           CGPoint(x:  606 , y:305),
-//                                           CGPoint(x: 624 , y:317),
-//                                           CGPoint(x: 613, y: 275),
-//                                           CGPoint(x: 631, y: 293),
-//                                           CGPoint(x: 626, y: 283),
-//                                           CGPoint(x:  649, y: 248),
-//                                           CGPoint(x:  648, y: 219),
-//                                           CGPoint(x:  564 , y:225),
-//                                           CGPoint(x: 551, y: 213),
-//                                           CGPoint(x:  566, y: 231),
-//                                           CGPoint(x: 552, y: 208),
-//                                           CGPoint(x: 577, y: 237),
-//                                           CGPoint(x: 616, y: 277)
-        
-        
-        
         
 //        new
         CGPoint(x: 255.5, y: 159.5),

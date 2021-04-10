@@ -2,40 +2,8 @@
 import Foundation
 import UIKit
 
-/// The protocol which the container of TouchDrawView can conform to
-@objc public protocol TouchDrawViewDelegate {
-    /// triggered when undo is enabled (only if it was previously disabled)
-    @objc optional func undoEnabled()
-
-    /// triggered when undo is disabled (only if it previously enabled)
-    @objc optional func undoDisabled()
-
-    /// triggered when redo is enabled (only if it was previously disabled)
-    @objc optional func redoEnabled()
-
-    /// triggered when redo is disabled (only if it previously enabled)
-    @objc optional func redoDisabled()
-
-    /// triggered when clear is enabled (only if it was previously disabled)
-    @objc optional func clearEnabled()
-
-    /// triggered when clear is disabled (only if it previously enabled)
-    @objc optional func clearDisabled()
-}
-
 /// A subclass of UIView which allows you to draw on the view using your fingers
 open class TouchDrawView: UIView {
-
-    /// Should be set in whichever class is using the TouchDrawView
-    open weak var delegate: TouchDrawViewDelegate?
-
-    /// Drawn underneath the strokes
-    open var image: UIImage? {
-        didSet(oldImage) { redrawStack() }
-    }
-
-    /// Used to register undo and redo actions
-    fileprivate var touchDrawUndoManager = UndoManager()
 
     /// Used to keep track of all the strokes
     internal var stack: [Stroke] = []
@@ -69,61 +37,6 @@ open class TouchDrawView: UIView {
         imageView.frame = rect
     }
 
-    /// Imports the stack so that previously exported stack can be used
-    open func importStack(_ stack: [Stroke]) {
-        // Make sure undo is disabled
-        if touchDrawUndoManager.canUndo {
-            delegate?.undoDisabled?()
-        }
-
-        // Make sure that redo is disabled
-        if touchDrawUndoManager.canRedo {
-            delegate?.redoDisabled?()
-        }
-
-        // Make sure that clear is enabled
-        if self.stack.count == 0 && stack.count > 0 {
-            delegate?.clearEnabled?()
-        }
-
-        self.stack = stack
-        redrawStack()
-        touchDrawUndoManager.removeAllActions()
-    }
-
-    /// Used to export the current stack (each individual stroke)
-    open func exportStack() -> [Stroke] {
-        return stack
-    }
-
-    /// Exports the current drawing
-    open func exportDrawing() -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, UIScreen.main.scale)
-        imageView.image?.draw(in: imageView.bounds)
-
-        let imageFromContext = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return imageFromContext!
-    }
-
-    /// Clears the drawing
-    @objc open func clearDrawing() {
-        if !touchDrawUndoManager.canUndo {
-            delegate?.undoEnabled?()
-        }
-
-        if touchDrawUndoManager.canRedo {
-            delegate?.redoDisabled?()
-        }
-
-        if stack.count > 0 {
-            delegate?.clearDisabled?()
-        }
-
-        touchDrawUndoManager.registerUndo(withTarget: self, selector: #selector(pushAll(_:)), object: stack)
-        stack = []
-        redrawStack()
-    }
 
     /// Sets the brush's color
     open func setColor(_ color: UIColor?) {
@@ -138,80 +51,6 @@ open class TouchDrawView: UIView {
     open func setWidth(_ width: CGFloat) {
         settings.width = width
     }
-
-    /// If possible, it will redo the last undone stroke
-    open func redo() {
-        if touchDrawUndoManager.canRedo {
-            let stackCount = stack.count
-
-            if !touchDrawUndoManager.canUndo {
-                delegate?.undoEnabled?()
-            }
-
-            touchDrawUndoManager.redo()
-
-            if !touchDrawUndoManager.canRedo {
-                self.delegate?.redoDisabled?()
-            }
-
-            updateClear(oldStackCount: stackCount)
-        }
-    }
-
-    /// If possible, it will undo the last stroke
-    open func undo() {
-        if touchDrawUndoManager.canUndo {
-            let stackCount = stack.count
-
-            if !touchDrawUndoManager.canRedo {
-                delegate?.redoEnabled?()
-            }
-
-            touchDrawUndoManager.undo()
-
-            if !touchDrawUndoManager.canUndo {
-                delegate?.undoDisabled?()
-            }
-
-            updateClear(oldStackCount: stackCount)
-        }
-    }
-
-    /// Update clear after either undo or redo
-    internal func updateClear(oldStackCount: Int) {
-        if oldStackCount > 0 && stack.count == 0 {
-            delegate?.clearDisabled?()
-        } else if oldStackCount == 0 && stack.count > 0 {
-            delegate?.clearEnabled?()
-        }
-    }
-
-    /// Removes the last Stroke from stack
-    @objc internal func popDrawing() {
-        touchDrawUndoManager.registerUndo(withTarget: self,
-                                          selector: #selector(pushDrawing(_:)),
-                                          object: stack.popLast())
-        redrawStack()
-    }
-
-    /// Adds a new stroke to the stack
-    @objc internal func pushDrawing(_ stroke: Stroke) {
-        stack.append(stroke)
-        drawStrokeWithContext(stroke)
-        touchDrawUndoManager.registerUndo(withTarget: self, selector: #selector(popDrawing), object: nil)
-    }
-
-    /// Draws all of the strokes
-    @objc internal func pushAll(_ strokes: [Stroke]) {
-        stack = strokes
-        redrawStack()
-        touchDrawUndoManager.registerUndo(withTarget: self, selector: #selector(clearDrawing), object: nil)
-    }
-
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-        redrawStack()
-    }
 }
 
 // MARK: - Touch Actions
@@ -225,8 +64,7 @@ extension TouchDrawView {
             let stroke = Stroke(points: [touch.location(in: self)],
                                 settings: settings)
             stack.append(stroke)
-             
-           print("CGPoint(x: \(stroke.points[0].x), y: \(stroke.points[0].y)),")
+
 
         }
     }
@@ -243,36 +81,8 @@ extension TouchDrawView {
             let userPoint = CGPoint(x: x, y: y)
             TracingVC.userPoints.append(userPoint)
                 
-//                for i in 0...7 {
-//                    x = x + i
-//                    y = y + i
-//
-//                    let srtokePoint = CGPoint(x: x, y: y)
-//    //                print("Points",srtokePoint)
-//                    TracingVC.userPoints.append(srtokePoint)
-//                }
         }
-        
-//        let asd = touches.first?.location(in: self)
-//
-//        var x = Int(asd!.x)
-//        var y = Int(asd!.y)
-//
-//            for i in 0...10 {
-//                x = x + i
-//                y = y + i
-//
-//                print(x, y)
-//                let srtokePoint = CGPoint(x: x, y: y)
-////                print("Points",srtokePoint)
-//                ViewController.strokePoints.append(srtokePoint)
-//            }
-           
-            
-            
-        
-        
-        
+
         
         if let touch = touches.first {
             let stroke = stack.last!
@@ -290,20 +100,6 @@ extension TouchDrawView {
             let lastPoint = stroke.points.last!
             drawLineWithContext(fromPoint: lastPoint, toPoint: lastPoint, properties: stroke.settings)
         }
-
-        if !touchDrawUndoManager.canUndo {
-            delegate?.undoEnabled?()
-        }
-
-        if touchDrawUndoManager.canRedo {
-            delegate?.redoDisabled?()
-        }
-
-        if stack.count == 1 {
-            delegate?.clearEnabled?()
-        }
-
-        touchDrawUndoManager.registerUndo(withTarget: self, selector: #selector(popDrawing), object: nil)
     }
 }
 
@@ -327,15 +123,6 @@ fileprivate extension TouchDrawView {
         imageView.image?.draw(in: imageView.bounds)
     }
 
-    /// Clears view, then draws stack
-    func redrawStack() {
-        beginImageContext()
-        image?.draw(in: imageView.bounds)
-        for stroke in stack {
-            drawStroke(stroke)
-        }
-        endImageContext()
-    }
 
     /// Draws a single Stroke
     func drawStroke(_ stroke: Stroke) {
